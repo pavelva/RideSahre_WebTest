@@ -34,6 +34,12 @@ namespace WebSiteGUITests.RideShare
         public string RegisterMissingPasswordMessage;
         public string RegisterPasswordAndVerifiedPasswordDontMatch;
         public string RegisterNotBGUMail;
+        public string BadSource;
+        public string BadDestination;
+        public string BadTimeInterval;
+        public string BadPassengersAmount;
+        public string BadDate;
+        public string BadPrice;
 
         #endregion
 
@@ -51,6 +57,13 @@ namespace WebSiteGUITests.RideShare
             this.RegisterMissingPasswordMessage = "Missing Fields - Key: password";
             this.RegisterPasswordAndVerifiedPasswordDontMatch = "Password and verified password not match";
             this.RegisterNotBGUMail = "Registration Must be Done with BGU Mail";
+
+            this.BadSource = "Please Enter Source";
+            this.BadDestination = "Please Enter Destination";
+            this.BadPrice = "Please Enter Legal Price";
+            this.BadPassengersAmount = "Please Enter Legal Passengers Amount";
+            this.BadDate = "Please Enter Legal Date";
+            this.BadTimeInterval = "Please Enter Legal Exit Time Interval";
         }
 
         private void initInput()

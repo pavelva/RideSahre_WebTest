@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using WebSiteGUITests.RideShare.Data;
+using System.Threading;
 
 namespace WebSiteGUITests.RideShare
 {
@@ -23,6 +24,8 @@ namespace WebSiteGUITests.RideShare
             this.UIMap.LoginParams.UILoginPassEditPassword = Playback.EncryptText(password);
 
             this.UIMap.Login();
+
+            Thread.Sleep(2000);
         }
 
         public void Logout()
@@ -90,6 +93,34 @@ namespace WebSiteGUITests.RideShare
         internal void GoToHome()
         {
             this.UIMap.GoToHome();
+        }
+
+        public void PostRequest(PostRequest request)
+        {
+            var args = this.UIMap.PostRequestParams;
+
+            args.UIPostInputEditText = request.source;
+            args.UIPostInputEdit1Text = request.destination;
+
+            args.UIYesRadioButton1Selected = true;
+            args.UINORadioButton1Selected = true;
+            args.UIDontcareRadioButton1Selected = true;
+
+            args.UIBigbagRadioButton1Selected = true;
+            args.UINoneSmallbagRadioButton1Selected = true;
+
+            args.UIDateEdit1Text = request.date;
+            args.UIPostFromTimeInputEdit1Text = request.fromTime;
+            args.UIPostToTimeInputEdit1Text = request.toTime;
+
+            this.UIMap.PostRequest(request.smoking, request.bags);
+        }
+
+        public void addStop(string stop)
+        {
+            this.UIMap.AddStopParams.UIPublishInputEdit1Text = stop;
+
+            this.UIMap.AddStop();
         }
     }
 }

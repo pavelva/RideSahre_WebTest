@@ -31,6 +31,55 @@ namespace WebSiteGUITests
     {
         
         /// <summary>
+        /// AssertPage - Use 'AssertPageExpectedValues' to pass parameters into this method.
+        /// </summary>
+        public void AssertPage()
+        {
+            #region Variable Declarations
+            HtmlCustom uIAHomeCustom = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIAHomeCustom;
+            HtmlCustom uIASearchRideCustom1 = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIASearchRideCustom1;
+            HtmlCustom uIAPublishRideCustom = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIAPublishRideCustom;
+            HtmlCustom uIAPostRequestCustom1 = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIAPostRequestCustom1;
+            HtmlCustom uIAMyRidesCustom = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIAMyRidesCustom;
+            HtmlDiv uIHomePane = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIHomePane;
+            HtmlDiv uIMyRidesPane = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIMyRidesPane;
+            HtmlDiv uISearchRidePane = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UISearchRidePane;
+            HtmlDiv uIPostRequestPane = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIPostRequestPane;
+            HtmlDiv uIPublishRidePane = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIPublishRidePane;
+            #endregion
+
+            // Verify that the 'ControlDefinition' property of 'aHome' custom control equals 'id="aHome" style="color: rgb(237, 192, 56);" onclick="updateCurrentPage(pages.home)"'
+            Assert.AreEqual(this.AssertPageExpectedValues.UIAHomeCustomControlDefinition, uIAHomeCustom.ControlDefinition);
+
+            // Verify that the 'ControlDefinition' property of 'aSearchRide' custom control equals 'id="aSearchRide" style="color: white;" onclick="updateCurrentPage(pages.searchRides)"'
+            Assert.AreEqual(this.AssertPageExpectedValues.UIASearchRideCustom1ControlDefinition, uIASearchRideCustom1.ControlDefinition);
+
+            // Verify that the 'ControlDefinition' property of 'aPublishRide' custom control equals 'id="aPublishRide" style="color: white;" onclick="updateCurrentPage(pages.publishRide)"'
+            Assert.AreEqual(this.AssertPageExpectedValues.UIAPublishRideCustomControlDefinition, uIAPublishRideCustom.ControlDefinition);
+
+            // Verify that the 'ControlDefinition' property of 'aPostRequest' custom control equals 'id="aPostRequest" style="color: white;" onclick="updateCurrentPage(pages.postRequest)"'
+            Assert.AreEqual(this.AssertPageExpectedValues.UIAPostRequestCustom1ControlDefinition, uIAPostRequestCustom1.ControlDefinition);
+
+            // Verify that the 'ControlDefinition' property of 'aMyRides' custom control equals 'id="aMyRides" style="color: white;" onclick="updateCurrentPage(pages.myRides)"'
+            Assert.AreEqual(this.AssertPageExpectedValues.UIAMyRidesCustomControlDefinition, uIAMyRidesCustom.ControlDefinition);
+
+            // Verify that the 'ControlDefinition' property of 'home' pane equals 'class="mainContent" id="home" style="display: block;"'
+            Assert.AreEqual(this.AssertPageExpectedValues.UIHomePaneControlDefinition, uIHomePane.ControlDefinition);
+
+            // Verify that the 'ControlDefinition' property of 'myRides' pane equals 'class="mainContent" id="myRides" style="display: none;"'
+            Assert.AreEqual(this.AssertPageExpectedValues.UIMyRidesPaneControlDefinition, uIMyRidesPane.ControlDefinition);
+
+            // Verify that the 'ControlDefinition' property of 'searchRide' pane equals 'class="mainContent" id="searchRide" style="display: none;"'
+            Assert.AreEqual(this.AssertPageExpectedValues.UISearchRidePaneControlDefinition, uISearchRidePane.ControlDefinition);
+
+            // Verify that the 'ControlDefinition' property of 'postRequest' pane equals 'class="mainContent container" id="postRequest" style="display: none;"'
+            Assert.AreEqual(this.AssertPageExpectedValues.UIPostRequestPaneControlDefinition, uIPostRequestPane.ControlDefinition);
+
+            // Verify that the 'ControlDefinition' property of 'publishRide' pane equals 'class="mainContent container" id="publishRide" style="display: none;"'
+            Assert.AreEqual(this.AssertPageExpectedValues.UIPublishRidePaneControlDefinition, uIPublishRidePane.ControlDefinition);
+        }
+        
+        /// <summary>
         /// AssertPopupMessage - Use 'AssertPopupMessageExpectedValues' to pass parameters into this method.
         /// </summary>
         public void AssertPopupMessage()
@@ -180,6 +229,71 @@ namespace WebSiteGUITests
         }
         
         /// <summary>
+        /// GoToHome
+        /// </summary>
+        public void GoToHome()
+        {
+            #region Variable Declarations
+            HtmlCustom uIAHomeCustom1 = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIAHomeCustom1;
+            #endregion
+
+            // Click 'aHome' custom control
+            Mouse.Click(uIAHomeCustom1, new Point(93, 13));
+        }
+        
+        /// <summary>
+        /// GoToMyRides
+        /// </summary>
+        public void GoToMyRides()
+        {
+            #region Variable Declarations
+            HtmlCustom uIAMyRidesCustom = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIAMyRidesCustom;
+            #endregion
+
+            // Click 'aMyRides' custom control
+            Mouse.Click(uIAMyRidesCustom, new Point(96, 8));
+        }
+        
+        /// <summary>
+        /// GoToPostRequest
+        /// </summary>
+        public void GoToPostRequest()
+        {
+            #region Variable Declarations
+            HtmlCustom uIAPostRequestCustom1 = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIAPostRequestCustom1;
+            #endregion
+
+            // Click 'aPostRequest' custom control
+            Mouse.Click(uIAPostRequestCustom1, new Point(123, 17));
+        }
+        
+        /// <summary>
+        /// GoToPublishRide
+        /// </summary>
+        public void GoToPublishRide()
+        {
+            #region Variable Declarations
+            HtmlCustom uIAPublishRideCustom = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIAPublishRideCustom;
+            #endregion
+
+            // Click 'aPublishRide' custom control
+            Mouse.Click(uIAPublishRideCustom, new Point(114, 7));
+        }
+        
+        /// <summary>
+        /// GoToSearchRide
+        /// </summary>
+        public void GoToSearchRide()
+        {
+            #region Variable Declarations
+            HtmlCustom uIASearchRideCustom1 = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIASearchRideCustom1;
+            #endregion
+
+            // Click 'aSearchRide' custom control
+            Mouse.Click(uIASearchRideCustom1, new Point(116, 6));
+        }
+        
+        /// <summary>
         /// Login - Use 'LoginParams' to pass parameters into this method.
         /// </summary>
         public void Login()
@@ -227,57 +341,6 @@ namespace WebSiteGUITests
         }
         
         /// <summary>
-        /// Register - Use 'RegisterParams' to pass parameters into this method.
-        /// </summary>
-        public void Register()
-        {
-            #region Variable Declarations
-            HtmlEdit uIRegFNameEdit = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIRegFNameEdit;
-            HtmlEdit uIRegLNameEdit = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIRegLNameEdit;
-            HtmlEdit uIRegEmailEdit = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIRegEmailEdit;
-            HtmlEdit uIRegPhoneEdit = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIRegPhoneEdit;
-            HtmlEdit uIRegPassEdit = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIRegPassEdit;
-            HtmlEdit uIRegVerPassEdit = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIRegVerPassEdit;
-            HtmlInputButton uIRegisterButton = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIRegisterContentPane.UIRegisterButton;
-            HtmlDiv uIAreYouSureAllDetailsPane = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIAreYouSureAllDetailsPane;
-            HtmlInputButton uIYesButton = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIYesButton;
-            #endregion
-
-            // Type '' in 'regFName' text box
-            uIRegFNameEdit.Text = this.RegisterParams.UIRegFNameEditText;
-
-            // Type '' in 'regLName' text box
-            uIRegLNameEdit.Text = this.RegisterParams.UIRegLNameEditText;
-
-            // Type '' in 'regEmail' text box
-            uIRegEmailEdit.Text = this.RegisterParams.UIRegEmailEditText;
-
-            // Type '' in 'regPhone' text box
-            uIRegPhoneEdit.Text = this.RegisterParams.UIRegPhoneEditText;
-
-            // Type '' in 'regPass' text box
-            uIRegPassEdit.Text = this.RegisterParams.UIRegPassEditText;
-
-            // Type '' in 'regVerPass' text box
-            uIRegVerPassEdit.Text = this.RegisterParams.UIRegVerPassEditText;
-
-            // Click 'Register' button
-            Mouse.Click(uIRegisterButton, new Point(35, 29));
-
-            // Set flag to allow play back to continue if non-essential actions fail. (For example, if a mouse hover action fails.)
-            Playback.PlaybackSettings.ContinueOnError = true;
-
-            // Mouse hover 'Are You Sure All Details Correct?' pane at (1, 1)
-            Mouse.Hover(uIAreYouSureAllDetailsPane, new Point(1, 1));
-
-            // Reset flag to ensure that play back stops if there is an error.
-            Playback.PlaybackSettings.ContinueOnError = false;
-
-            // Click 'Yes' button
-            Mouse.Click(uIYesButton, new Point(48, 11));
-        }
-        
-        /// <summary>
         /// StartRideShare - Use 'StartRideShareParams' to pass parameters into this method.
         /// </summary>
         public void StartRideShare()
@@ -301,121 +364,19 @@ namespace WebSiteGUITests
             uIBlankPageWindowsInteWindow.NavigateToUrl(new System.Uri(this.StartRideShareParams.UIBlankPageWindowsInteWindowUrl));
         }
         
-        /// <summary>
-        /// AssertPage - Use 'AssertPageExpectedValues' to pass parameters into this method.
-        /// </summary>
-        public void AssertPage()
-        {
-            #region Variable Declarations
-            HtmlCustom uIAHomeCustom = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIAHomeCustom;
-            HtmlCustom uIASearchRideCustom1 = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIASearchRideCustom1;
-            HtmlCustom uIAPublishRideCustom = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIAPublishRideCustom;
-            HtmlCustom uIAPostRequestCustom1 = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIAPostRequestCustom1;
-            HtmlCustom uIAMyRidesCustom = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIAMyRidesCustom;
-            HtmlDiv uIHomePane = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIHomePane;
-            HtmlDiv uIMyRidesPane = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIMyRidesPane;
-            HtmlDiv uISearchRidePane = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UISearchRidePane;
-            HtmlDiv uIPostRequestPane = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIPostRequestPane;
-            HtmlDiv uIPublishRidePane = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIPublishRidePane;
-            #endregion
-
-            // Verify that the 'ControlDefinition' property of 'aHome' custom control equals 'id="aHome" style="color: rgb(237, 192, 56);" onclick="updateCurrentPage(pages.home)"'
-            Assert.AreEqual(this.AssertPageExpectedValues.UIAHomeCustomControlDefinition, uIAHomeCustom.ControlDefinition);
-
-            // Verify that the 'ControlDefinition' property of 'aSearchRide' custom control equals 'id="aSearchRide" style="color: white;" onclick="updateCurrentPage(pages.searchRides)"'
-            Assert.AreEqual(this.AssertPageExpectedValues.UIASearchRideCustom1ControlDefinition, uIASearchRideCustom1.ControlDefinition);
-
-            // Verify that the 'ControlDefinition' property of 'aPublishRide' custom control equals 'id="aPublishRide" style="color: white;" onclick="updateCurrentPage(pages.publishRide)"'
-            Assert.AreEqual(this.AssertPageExpectedValues.UIAPublishRideCustomControlDefinition, uIAPublishRideCustom.ControlDefinition);
-
-            // Verify that the 'ControlDefinition' property of 'aPostRequest' custom control equals 'id="aPostRequest" style="color: white;" onclick="updateCurrentPage(pages.postRequest)"'
-            Assert.AreEqual(this.AssertPageExpectedValues.UIAPostRequestCustom1ControlDefinition, uIAPostRequestCustom1.ControlDefinition);
-
-            // Verify that the 'ControlDefinition' property of 'aMyRides' custom control equals 'id="aMyRides" style="color: white;" onclick="updateCurrentPage(pages.myRides)"'
-            Assert.AreEqual(this.AssertPageExpectedValues.UIAMyRidesCustomControlDefinition, uIAMyRidesCustom.ControlDefinition);
-
-            // Verify that the 'ControlDefinition' property of 'home' pane equals 'class="mainContent" id="home" style="display: block;"'
-            Assert.AreEqual(this.AssertPageExpectedValues.UIHomePaneControlDefinition, uIHomePane.ControlDefinition);
-
-            // Verify that the 'ControlDefinition' property of 'myRides' pane equals 'class="mainContent" id="myRides" style="display: none;"'
-            Assert.AreEqual(this.AssertPageExpectedValues.UIMyRidesPaneControlDefinition, uIMyRidesPane.ControlDefinition);
-
-            // Verify that the 'ControlDefinition' property of 'searchRide' pane equals 'class="mainContent" id="searchRide" style="display: none;"'
-            Assert.AreEqual(this.AssertPageExpectedValues.UISearchRidePaneControlDefinition, uISearchRidePane.ControlDefinition);
-
-            // Verify that the 'ControlDefinition' property of 'postRequest' pane equals 'class="mainContent container" id="postRequest" style="display: none;"'
-            Assert.AreEqual(this.AssertPageExpectedValues.UIPostRequestPaneControlDefinition, uIPostRequestPane.ControlDefinition);
-
-            // Verify that the 'ControlDefinition' property of 'publishRide' pane equals 'class="mainContent container" id="publishRide" style="display: none;"'
-            Assert.AreEqual(this.AssertPageExpectedValues.UIPublishRidePaneControlDefinition, uIPublishRidePane.ControlDefinition);
-        }
-        
-        /// <summary>
-        /// GoToSearchRide
-        /// </summary>
-        public void GoToSearchRide()
-        {
-            #region Variable Declarations
-            HtmlCustom uIASearchRideCustom1 = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIASearchRideCustom1;
-            #endregion
-
-            // Click 'aSearchRide' custom control
-            Mouse.Click(uIASearchRideCustom1, new Point(116, 6));
-        }
-        
-        /// <summary>
-        /// GoToPublishRide
-        /// </summary>
-        public void GoToPublishRide()
-        {
-            #region Variable Declarations
-            HtmlCustom uIAPublishRideCustom = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIAPublishRideCustom;
-            #endregion
-
-            // Click 'aPublishRide' custom control
-            Mouse.Click(uIAPublishRideCustom, new Point(114, 7));
-        }
-        
-        /// <summary>
-        /// GoToPostRequest
-        /// </summary>
-        public void GoToPostRequest()
-        {
-            #region Variable Declarations
-            HtmlCustom uIAPostRequestCustom1 = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIAPostRequestCustom1;
-            #endregion
-
-            // Click 'aPostRequest' custom control
-            Mouse.Click(uIAPostRequestCustom1, new Point(123, 17));
-        }
-        
-        /// <summary>
-        /// GoToMyRides
-        /// </summary>
-        public void GoToMyRides()
-        {
-            #region Variable Declarations
-            HtmlCustom uIAMyRidesCustom = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIAMyRidesCustom;
-            #endregion
-
-            // Click 'aMyRides' custom control
-            Mouse.Click(uIAMyRidesCustom, new Point(96, 8));
-        }
-        
-        /// <summary>
-        /// GoToHome
-        /// </summary>
-        public void GoToHome()
-        {
-            #region Variable Declarations
-            HtmlCustom uIAHomeCustom1 = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIAHomeCustom1;
-            #endregion
-
-            // Click 'aHome' custom control
-            Mouse.Click(uIAHomeCustom1, new Point(93, 13));
-        }
-        
         #region Properties
+        public virtual AssertPageExpectedValues AssertPageExpectedValues
+        {
+            get
+            {
+                if ((this.mAssertPageExpectedValues == null))
+                {
+                    this.mAssertPageExpectedValues = new AssertPageExpectedValues();
+                }
+                return this.mAssertPageExpectedValues;
+            }
+        }
+        
         public virtual AssertPopupMessageExpectedValues AssertPopupMessageExpectedValues
         {
             get
@@ -464,18 +425,6 @@ namespace WebSiteGUITests
             }
         }
         
-        public virtual RegisterParams RegisterParams
-        {
-            get
-            {
-                if ((this.mRegisterParams == null))
-                {
-                    this.mRegisterParams = new RegisterParams();
-                }
-                return this.mRegisterParams;
-            }
-        }
-        
         public virtual StartRideShareParams StartRideShareParams
         {
             get
@@ -485,18 +434,6 @@ namespace WebSiteGUITests
                     this.mStartRideShareParams = new StartRideShareParams();
                 }
                 return this.mStartRideShareParams;
-            }
-        }
-        
-        public virtual AssertPageExpectedValues AssertPageExpectedValues
-        {
-            get
-            {
-                if ((this.mAssertPageExpectedValues == null))
-                {
-                    this.mAssertPageExpectedValues = new AssertPageExpectedValues();
-                }
-                return this.mAssertPageExpectedValues;
             }
         }
         
@@ -574,6 +511,8 @@ namespace WebSiteGUITests
         #endregion
         
         #region Fields
+        private AssertPageExpectedValues mAssertPageExpectedValues;
+        
         private AssertPopupMessageExpectedValues mAssertPopupMessageExpectedValues;
         
         private AssertRegisterPanelExpectedValues mAssertRegisterPanelExpectedValues;
@@ -582,11 +521,7 @@ namespace WebSiteGUITests
         
         private LoginParams mLoginParams;
         
-        private RegisterParams mRegisterParams;
-        
         private StartRideShareParams mStartRideShareParams;
-        
-        private AssertPageExpectedValues mAssertPageExpectedValues;
         
         private UIRideShareWindowsInteWindow mUIRideShareWindowsInteWindow;
         
@@ -599,6 +534,70 @@ namespace WebSiteGUITests
         private UIInternetExplorerWindow mUIInternetExplorerWindow;
         
         private UIRideShareGoogleChromWindow mUIRideShareGoogleChromWindow;
+        #endregion
+    }
+    
+    /// <summary>
+    /// Parameters to be passed into 'AssertPage'
+    /// </summary>
+    [GeneratedCode("Coded UITest Builder", "12.0.31101.0")]
+    public class AssertPageExpectedValues
+    {
+        
+        #region Fields
+        /// <summary>
+        /// Verify that the 'ControlDefinition' property of 'aHome' custom control equals 'id="aHome" style="color: rgb(237, 192, 56);" onclick="updateCurrentPage(pages.home)"'
+        /// </summary>
+        public string UIAHomeCustomControlDefinition = "id=\"aHome\" style=\"color: rgb(237, 192, 56);\" onclick=\"updateCurrentPage(pages.hom" +
+            "e)\"";
+        
+        /// <summary>
+        /// Verify that the 'ControlDefinition' property of 'aSearchRide' custom control equals 'id="aSearchRide" style="color: white;" onclick="updateCurrentPage(pages.searchRides)"'
+        /// </summary>
+        public string UIASearchRideCustom1ControlDefinition = "id=\"aSearchRide\" style=\"color: white;\" onclick=\"updateCurrentPage(pages.searchRid" +
+            "es)\"";
+        
+        /// <summary>
+        /// Verify that the 'ControlDefinition' property of 'aPublishRide' custom control equals 'id="aPublishRide" style="color: white;" onclick="updateCurrentPage(pages.publishRide)"'
+        /// </summary>
+        public string UIAPublishRideCustomControlDefinition = "id=\"aPublishRide\" style=\"color: white;\" onclick=\"updateCurrentPage(pages.publishR" +
+            "ide)\"";
+        
+        /// <summary>
+        /// Verify that the 'ControlDefinition' property of 'aPostRequest' custom control equals 'id="aPostRequest" style="color: white;" onclick="updateCurrentPage(pages.postRequest)"'
+        /// </summary>
+        public string UIAPostRequestCustom1ControlDefinition = "id=\"aPostRequest\" style=\"color: white;\" onclick=\"updateCurrentPage(pages.postRequ" +
+            "est)\"";
+        
+        /// <summary>
+        /// Verify that the 'ControlDefinition' property of 'aMyRides' custom control equals 'id="aMyRides" style="color: white;" onclick="updateCurrentPage(pages.myRides)"'
+        /// </summary>
+        public string UIAMyRidesCustomControlDefinition = "id=\"aMyRides\" style=\"color: white;\" onclick=\"updateCurrentPage(pages.myRides)\"";
+        
+        /// <summary>
+        /// Verify that the 'ControlDefinition' property of 'home' pane equals 'class="mainContent" id="home" style="display: block;"'
+        /// </summary>
+        public string UIHomePaneControlDefinition = "class=\"mainContent\" id=\"home\" style=\"display: block;\"";
+        
+        /// <summary>
+        /// Verify that the 'ControlDefinition' property of 'myRides' pane equals 'class="mainContent" id="myRides" style="display: none;"'
+        /// </summary>
+        public string UIMyRidesPaneControlDefinition = "class=\"mainContent\" id=\"myRides\" style=\"display: none;\"";
+        
+        /// <summary>
+        /// Verify that the 'ControlDefinition' property of 'searchRide' pane equals 'class="mainContent" id="searchRide" style="display: none;"'
+        /// </summary>
+        public string UISearchRidePaneControlDefinition = "class=\"mainContent\" id=\"searchRide\" style=\"display: none;\"";
+        
+        /// <summary>
+        /// Verify that the 'ControlDefinition' property of 'postRequest' pane equals 'class="mainContent container" id="postRequest" style="display: none;"'
+        /// </summary>
+        public string UIPostRequestPaneControlDefinition = "class=\"mainContent container\" id=\"postRequest\" style=\"display: none;\"";
+        
+        /// <summary>
+        /// Verify that the 'ControlDefinition' property of 'publishRide' pane equals 'class="mainContent container" id="publishRide" style="display: none;"'
+        /// </summary>
+        public string UIPublishRidePaneControlDefinition = "class=\"mainContent container\" id=\"publishRide\" style=\"display: none;\"";
         #endregion
     }
     
@@ -759,46 +758,6 @@ namespace WebSiteGUITests
     }
     
     /// <summary>
-    /// Parameters to be passed into 'Register'
-    /// </summary>
-    [GeneratedCode("Coded UITest Builder", "12.0.31101.0")]
-    public class RegisterParams
-    {
-        
-        #region Fields
-        /// <summary>
-        /// Type '' in 'regFName' text box
-        /// </summary>
-        public string UIRegFNameEditText = "";
-        
-        /// <summary>
-        /// Type '' in 'regLName' text box
-        /// </summary>
-        public string UIRegLNameEditText = "";
-        
-        /// <summary>
-        /// Type '' in 'regEmail' text box
-        /// </summary>
-        public string UIRegEmailEditText = "";
-        
-        /// <summary>
-        /// Type '' in 'regPhone' text box
-        /// </summary>
-        public string UIRegPhoneEditText = "";
-        
-        /// <summary>
-        /// Type '' in 'regPass' text box
-        /// </summary>
-        public string UIRegPassEditText = "";
-        
-        /// <summary>
-        /// Type '' in 'regVerPass' text box
-        /// </summary>
-        public string UIRegVerPassEditText = "";
-        #endregion
-    }
-    
-    /// <summary>
     /// Parameters to be passed into 'StartRideShare'
     /// </summary>
     [GeneratedCode("Coded UITest Builder", "12.0.31101.0")]
@@ -828,70 +787,6 @@ namespace WebSiteGUITests
         #endregion
     }
     
-    /// <summary>
-    /// Parameters to be passed into 'AssertPage'
-    /// </summary>
-    [GeneratedCode("Coded UITest Builder", "12.0.31101.0")]
-    public class AssertPageExpectedValues
-    {
-        
-        #region Fields
-        /// <summary>
-        /// Verify that the 'ControlDefinition' property of 'aHome' custom control equals 'id="aHome" style="color: rgb(237, 192, 56);" onclick="updateCurrentPage(pages.home)"'
-        /// </summary>
-        public string UIAHomeCustomControlDefinition = "id=\"aHome\" style=\"color: rgb(237, 192, 56);\" onclick=\"updateCurrentPage(pages.hom" +
-            "e)\"";
-        
-        /// <summary>
-        /// Verify that the 'ControlDefinition' property of 'aSearchRide' custom control equals 'id="aSearchRide" style="color: white;" onclick="updateCurrentPage(pages.searchRides)"'
-        /// </summary>
-        public string UIASearchRideCustom1ControlDefinition = "id=\"aSearchRide\" style=\"color: white;\" onclick=\"updateCurrentPage(pages.searchRid" +
-            "es)\"";
-        
-        /// <summary>
-        /// Verify that the 'ControlDefinition' property of 'aPublishRide' custom control equals 'id="aPublishRide" style="color: white;" onclick="updateCurrentPage(pages.publishRide)"'
-        /// </summary>
-        public string UIAPublishRideCustomControlDefinition = "id=\"aPublishRide\" style=\"color: white;\" onclick=\"updateCurrentPage(pages.publishR" +
-            "ide)\"";
-        
-        /// <summary>
-        /// Verify that the 'ControlDefinition' property of 'aPostRequest' custom control equals 'id="aPostRequest" style="color: white;" onclick="updateCurrentPage(pages.postRequest)"'
-        /// </summary>
-        public string UIAPostRequestCustom1ControlDefinition = "id=\"aPostRequest\" style=\"color: white;\" onclick=\"updateCurrentPage(pages.postRequ" +
-            "est)\"";
-        
-        /// <summary>
-        /// Verify that the 'ControlDefinition' property of 'aMyRides' custom control equals 'id="aMyRides" style="color: white;" onclick="updateCurrentPage(pages.myRides)"'
-        /// </summary>
-        public string UIAMyRidesCustomControlDefinition = "id=\"aMyRides\" style=\"color: white;\" onclick=\"updateCurrentPage(pages.myRides)\"";
-        
-        /// <summary>
-        /// Verify that the 'ControlDefinition' property of 'home' pane equals 'class="mainContent" id="home" style="display: block;"'
-        /// </summary>
-        public string UIHomePaneControlDefinition = "class=\"mainContent\" id=\"home\" style=\"display: block;\"";
-        
-        /// <summary>
-        /// Verify that the 'ControlDefinition' property of 'myRides' pane equals 'class="mainContent" id="myRides" style="display: none;"'
-        /// </summary>
-        public string UIMyRidesPaneControlDefinition = "class=\"mainContent\" id=\"myRides\" style=\"display: none;\"";
-        
-        /// <summary>
-        /// Verify that the 'ControlDefinition' property of 'searchRide' pane equals 'class="mainContent" id="searchRide" style="display: none;"'
-        /// </summary>
-        public string UISearchRidePaneControlDefinition = "class=\"mainContent\" id=\"searchRide\" style=\"display: none;\"";
-        
-        /// <summary>
-        /// Verify that the 'ControlDefinition' property of 'postRequest' pane equals 'class="mainContent container" id="postRequest" style="display: none;"'
-        /// </summary>
-        public string UIPostRequestPaneControlDefinition = "class=\"mainContent container\" id=\"postRequest\" style=\"display: none;\"";
-        
-        /// <summary>
-        /// Verify that the 'ControlDefinition' property of 'publishRide' pane equals 'class="mainContent container" id="publishRide" style="display: none;"'
-        /// </summary>
-        public string UIPublishRidePaneControlDefinition = "class=\"mainContent container\" id=\"publishRide\" style=\"display: none;\"";
-        #endregion
-    }
-    
     [GeneratedCode("Coded UITest Builder", "12.0.31101.0")]
     public class UIRideShareWindowsInteWindow : BrowserWindow
     {
@@ -902,6 +797,7 @@ namespace WebSiteGUITests
             this.SearchProperties[UITestControl.PropertyNames.Name] = "RideShare";
             this.SearchProperties[UITestControl.PropertyNames.ClassName] = "IEFrame";
             this.WindowTitles.Add("RideShare");
+            this.WindowTitles.Add("New Tab");
             #endregion
         }
         
@@ -934,12 +830,54 @@ namespace WebSiteGUITests
                 return this.mUIRideShareWindowsInteTitleBar;
             }
         }
+        
+        public UITabRowTabList UITabRowTabList
+        {
+            get
+            {
+                if ((this.mUITabRowTabList == null))
+                {
+                    this.mUITabRowTabList = new UITabRowTabList(this);
+                }
+                return this.mUITabRowTabList;
+            }
+        }
+        
+        public UIAddressBarClient UIAddressBarClient
+        {
+            get
+            {
+                if ((this.mUIAddressBarClient == null))
+                {
+                    this.mUIAddressBarClient = new UIAddressBarClient(this);
+                }
+                return this.mUIAddressBarClient;
+            }
+        }
+        
+        public UIAddressComboControlToolBar UIAddressComboControlToolBar
+        {
+            get
+            {
+                if ((this.mUIAddressComboControlToolBar == null))
+                {
+                    this.mUIAddressComboControlToolBar = new UIAddressComboControlToolBar(this);
+                }
+                return this.mUIAddressComboControlToolBar;
+            }
+        }
         #endregion
         
         #region Fields
         private UIRideShareDocument mUIRideShareDocument;
         
         private UIRideShareWindowsInteTitleBar mUIRideShareWindowsInteTitleBar;
+        
+        private UITabRowTabList mUITabRowTabList;
+        
+        private UIAddressBarClient mUIAddressBarClient;
+        
+        private UIAddressComboControlToolBar mUIAddressComboControlToolBar;
         #endregion
     }
     
@@ -1791,6 +1729,736 @@ namespace WebSiteGUITests
                 return this.mUIAHomeCustom1;
             }
         }
+        
+        public HtmlEdit UIDateEdit
+        {
+            get
+            {
+                if ((this.mUIDateEdit == null))
+                {
+                    this.mUIDateEdit = new HtmlEdit(this);
+                    #region Search Criteria
+                    this.mUIDateEdit.SearchProperties[HtmlEdit.PropertyNames.Id] = "postDateInput";
+                    this.mUIDateEdit.SearchProperties[HtmlEdit.PropertyNames.Name] = "Date";
+                    this.mUIDateEdit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
+                    this.mUIDateEdit.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
+                    this.mUIDateEdit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
+                    this.mUIDateEdit.FilterProperties[HtmlEdit.PropertyNames.Class] = "inputText";
+                    this.mUIDateEdit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"Date\" class=\"inputText\" id=\"postDa";
+                    this.mUIDateEdit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "36";
+                    this.mUIDateEdit.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIDateEdit;
+            }
+        }
+        
+        public HtmlRadioButton UINORadioButton
+        {
+            get
+            {
+                if ((this.mUINORadioButton == null))
+                {
+                    this.mUINORadioButton = new HtmlRadioButton(this);
+                    #region Search Criteria
+                    this.mUINORadioButton.SearchProperties[HtmlRadioButton.PropertyNames.Id] = "PostSmokeNo";
+                    this.mUINORadioButton.SearchProperties[HtmlRadioButton.PropertyNames.Name] = "postRadio";
+                    this.mUINORadioButton.FilterProperties[HtmlRadioButton.PropertyNames.Value] = "on";
+                    this.mUINORadioButton.FilterProperties[HtmlRadioButton.PropertyNames.LabeledBy] = "No ";
+                    this.mUINORadioButton.FilterProperties[HtmlRadioButton.PropertyNames.Title] = null;
+                    this.mUINORadioButton.FilterProperties[HtmlRadioButton.PropertyNames.ItemCount] = "3";
+                    this.mUINORadioButton.FilterProperties[HtmlRadioButton.PropertyNames.Class] = "radioInput";
+                    this.mUINORadioButton.FilterProperties[HtmlRadioButton.PropertyNames.ControlDefinition] = "name=\"postRadio\" class=\"radioInput\" id=\"";
+                    this.mUINORadioButton.FilterProperties[HtmlRadioButton.PropertyNames.TagInstance] = "42";
+                    this.mUINORadioButton.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUINORadioButton;
+            }
+        }
+        
+        public HtmlRadioButton UIYesRadioButton
+        {
+            get
+            {
+                if ((this.mUIYesRadioButton == null))
+                {
+                    this.mUIYesRadioButton = new HtmlRadioButton(this);
+                    #region Search Criteria
+                    this.mUIYesRadioButton.SearchProperties[HtmlRadioButton.PropertyNames.Id] = "PostSmokeYes";
+                    this.mUIYesRadioButton.SearchProperties[HtmlRadioButton.PropertyNames.Name] = "postRadio";
+                    this.mUIYesRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.Value] = "on";
+                    this.mUIYesRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.LabeledBy] = "Yes ";
+                    this.mUIYesRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.Title] = null;
+                    this.mUIYesRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.ItemCount] = "3";
+                    this.mUIYesRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.Class] = "radioInput";
+                    this.mUIYesRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.ControlDefinition] = "name=\"postRadio\" class=\"radioInput\" id=\"";
+                    this.mUIYesRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.TagInstance] = "41";
+                    this.mUIYesRadioButton.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIYesRadioButton;
+            }
+        }
+        
+        public UIPostContentLeftPane UIPostContentLeftPane
+        {
+            get
+            {
+                if ((this.mUIPostContentLeftPane == null))
+                {
+                    this.mUIPostContentLeftPane = new UIPostContentLeftPane(this);
+                }
+                return this.mUIPostContentLeftPane;
+            }
+        }
+        
+        public HtmlRadioButton UIDontcareRadioButton
+        {
+            get
+            {
+                if ((this.mUIDontcareRadioButton == null))
+                {
+                    this.mUIDontcareRadioButton = new HtmlRadioButton(this);
+                    #region Search Criteria
+                    this.mUIDontcareRadioButton.SearchProperties[HtmlRadioButton.PropertyNames.Id] = "PostSmokeDontCare";
+                    this.mUIDontcareRadioButton.SearchProperties[HtmlRadioButton.PropertyNames.Name] = "postRadio";
+                    this.mUIDontcareRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.Value] = "on";
+                    this.mUIDontcareRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.LabeledBy] = "Dont care ";
+                    this.mUIDontcareRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.Title] = null;
+                    this.mUIDontcareRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.ItemCount] = "3";
+                    this.mUIDontcareRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.Class] = "radioInput";
+                    this.mUIDontcareRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.ControlDefinition] = "name=\"postRadio\" class=\"radioInput\" id=\"";
+                    this.mUIDontcareRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.TagInstance] = "43";
+                    this.mUIDontcareRadioButton.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIDontcareRadioButton;
+            }
+        }
+        
+        public HtmlRadioButton UIBigbagRadioButton
+        {
+            get
+            {
+                if ((this.mUIBigbagRadioButton == null))
+                {
+                    this.mUIBigbagRadioButton = new HtmlRadioButton(this);
+                    #region Search Criteria
+                    this.mUIBigbagRadioButton.SearchProperties[HtmlRadioButton.PropertyNames.Id] = "post1bad";
+                    this.mUIBigbagRadioButton.SearchProperties[HtmlRadioButton.PropertyNames.Name] = "postRadio2";
+                    this.mUIBigbagRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.Value] = "on";
+                    this.mUIBigbagRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.LabeledBy] = "Big bag ";
+                    this.mUIBigbagRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.Title] = null;
+                    this.mUIBigbagRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.ItemCount] = "2";
+                    this.mUIBigbagRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.Class] = "radioInput";
+                    this.mUIBigbagRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.ControlDefinition] = "name=\"postRadio2\" class=\"radioInput\" id=";
+                    this.mUIBigbagRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.TagInstance] = "44";
+                    this.mUIBigbagRadioButton.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIBigbagRadioButton;
+            }
+        }
+        
+        public HtmlRadioButton UINoneSmallbagRadioButton
+        {
+            get
+            {
+                if ((this.mUINoneSmallbagRadioButton == null))
+                {
+                    this.mUINoneSmallbagRadioButton = new HtmlRadioButton(this);
+                    #region Search Criteria
+                    this.mUINoneSmallbagRadioButton.SearchProperties[HtmlRadioButton.PropertyNames.Id] = "post0bag";
+                    this.mUINoneSmallbagRadioButton.SearchProperties[HtmlRadioButton.PropertyNames.Name] = "postRadio2";
+                    this.mUINoneSmallbagRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.Value] = "on";
+                    this.mUINoneSmallbagRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.LabeledBy] = "None/Small bag ";
+                    this.mUINoneSmallbagRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.Title] = null;
+                    this.mUINoneSmallbagRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.ItemCount] = "2";
+                    this.mUINoneSmallbagRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.Class] = "radioInput";
+                    this.mUINoneSmallbagRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.ControlDefinition] = "name=\"postRadio2\" class=\"radioInput\" id=";
+                    this.mUINoneSmallbagRadioButton.FilterProperties[HtmlRadioButton.PropertyNames.TagInstance] = "45";
+                    this.mUINoneSmallbagRadioButton.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUINoneSmallbagRadioButton;
+            }
+        }
+        
+        public HtmlEdit UIPostInputEditSource
+        {
+            get
+            {
+                if ((this.mUIPostInputEditSource == null))
+                {
+                    this.mUIPostInputEditSource = new HtmlEdit(this);
+                    #region Search Criteria
+                    this.mUIPostInputEditSource.SearchProperties[HtmlEdit.PropertyNames.Id] = "postInputSource";
+                    this.mUIPostInputEditSource.SearchProperties[HtmlEdit.PropertyNames.Name] = "postInput";
+                    this.mUIPostInputEditSource.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
+                    this.mUIPostInputEditSource.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
+                    this.mUIPostInputEditSource.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
+                    this.mUIPostInputEditSource.FilterProperties[HtmlEdit.PropertyNames.Class] = "inputText";
+                    this.mUIPostInputEditSource.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"postInput\" class=\"inputText\" id=\"p";
+                    this.mUIPostInputEditSource.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "39";
+                    this.mUIPostInputEditSource.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIPostInputEditSource;
+            }
+        }
+        
+        public HtmlDiv UIBeershebaIsraelPane
+        {
+            get
+            {
+                if ((this.mUIBeershebaIsraelPane == null))
+                {
+                    this.mUIBeershebaIsraelPane = new HtmlDiv(this);
+                    #region Search Criteria
+                    this.mUIBeershebaIsraelPane.SearchProperties[HtmlDiv.PropertyNames.Id] = null;
+                    this.mUIBeershebaIsraelPane.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
+                    this.mUIBeershebaIsraelPane.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "BeershebaIsrael";
+                    this.mUIBeershebaIsraelPane.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
+                    this.mUIBeershebaIsraelPane.FilterProperties[HtmlDiv.PropertyNames.Class] = "pac-item";
+                    this.mUIBeershebaIsraelPane.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "class=\"pac-item\"";
+                    this.mUIBeershebaIsraelPane.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "220";
+                    this.mUIBeershebaIsraelPane.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIBeershebaIsraelPane;
+            }
+        }
+        
+        public HtmlSpan UIIsraelPane
+        {
+            get
+            {
+                if ((this.mUIIsraelPane == null))
+                {
+                    this.mUIIsraelPane = new HtmlSpan(this);
+                    #region Search Criteria
+                    this.mUIIsraelPane.SearchProperties[HtmlDiv.PropertyNames.Id] = null;
+                    this.mUIIsraelPane.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
+                    this.mUIIsraelPane.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Israel";
+                    this.mUIIsraelPane.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
+                    this.mUIIsraelPane.FilterProperties[HtmlDiv.PropertyNames.Class] = null;
+                    this.mUIIsraelPane.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = null;
+                    this.mUIIsraelPane.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "245";
+                    this.mUIIsraelPane.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIIsraelPane;
+            }
+        }
+        
+        public HtmlEdit UIPostInputEditDestination
+        {
+            get
+            {
+                if ((this.mUIPostInputEditDestination == null))
+                {
+                    this.mUIPostInputEditDestination = new HtmlEdit(this);
+                    #region Search Criteria
+                    this.mUIPostInputEditDestination.SearchProperties[HtmlEdit.PropertyNames.Id] = "postInputDest";
+                    this.mUIPostInputEditDestination.SearchProperties[HtmlEdit.PropertyNames.Name] = "postInput";
+                    this.mUIPostInputEditDestination.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
+                    this.mUIPostInputEditDestination.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
+                    this.mUIPostInputEditDestination.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
+                    this.mUIPostInputEditDestination.FilterProperties[HtmlEdit.PropertyNames.Class] = "inputText";
+                    this.mUIPostInputEditDestination.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"postInput\" class=\"inputText\" id=\"p";
+                    this.mUIPostInputEditDestination.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "40";
+                    this.mUIPostInputEditDestination.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIPostInputEditDestination;
+            }
+        }
+        
+        public HtmlDiv UIHaifaIsraelPane
+        {
+            get
+            {
+                if ((this.mUIHaifaIsraelPane == null))
+                {
+                    this.mUIHaifaIsraelPane = new HtmlDiv(this);
+                    #region Search Criteria
+                    this.mUIHaifaIsraelPane.SearchProperties[HtmlDiv.PropertyNames.Id] = null;
+                    this.mUIHaifaIsraelPane.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
+                    this.mUIHaifaIsraelPane.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "HaifaIsrael";
+                    this.mUIHaifaIsraelPane.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
+                    this.mUIHaifaIsraelPane.FilterProperties[HtmlDiv.PropertyNames.Class] = "pac-item";
+                    this.mUIHaifaIsraelPane.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "class=\"pac-item\"";
+                    this.mUIHaifaIsraelPane.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "226";
+                    this.mUIHaifaIsraelPane.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIHaifaIsraelPane;
+            }
+        }
+        
+        public HtmlEdit UIPostFromTimeInputEdit
+        {
+            get
+            {
+                if ((this.mUIPostFromTimeInputEdit == null))
+                {
+                    this.mUIPostFromTimeInputEdit = new HtmlEdit(this);
+                    #region Search Criteria
+                    this.mUIPostFromTimeInputEdit.SearchProperties[HtmlEdit.PropertyNames.Id] = "postFromTimeInput";
+                    this.mUIPostFromTimeInputEdit.SearchProperties[HtmlEdit.PropertyNames.Name] = null;
+                    this.mUIPostFromTimeInputEdit.SearchProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
+                    this.mUIPostFromTimeInputEdit.SearchProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
+                    this.mUIPostFromTimeInputEdit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
+                    this.mUIPostFromTimeInputEdit.FilterProperties[HtmlEdit.PropertyNames.Class] = "inputText timeInput";
+                    this.mUIPostFromTimeInputEdit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "class=\"inputText timeInput\" id=\"postFrom";
+                    this.mUIPostFromTimeInputEdit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "37";
+                    this.mUIPostFromTimeInputEdit.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIPostFromTimeInputEdit;
+            }
+        }
+        
+        public HtmlEdit UIPostToTimeInputEdit
+        {
+            get
+            {
+                if ((this.mUIPostToTimeInputEdit == null))
+                {
+                    this.mUIPostToTimeInputEdit = new HtmlEdit(this);
+                    #region Search Criteria
+                    this.mUIPostToTimeInputEdit.SearchProperties[HtmlEdit.PropertyNames.Id] = "postToTimeInput";
+                    this.mUIPostToTimeInputEdit.SearchProperties[HtmlEdit.PropertyNames.Name] = null;
+                    this.mUIPostToTimeInputEdit.SearchProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
+                    this.mUIPostToTimeInputEdit.SearchProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
+                    this.mUIPostToTimeInputEdit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
+                    this.mUIPostToTimeInputEdit.FilterProperties[HtmlEdit.PropertyNames.Class] = "inputText timeInput";
+                    this.mUIPostToTimeInputEdit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "class=\"inputText timeInput\" id=\"postToTi";
+                    this.mUIPostToTimeInputEdit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "38";
+                    this.mUIPostToTimeInputEdit.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIPostToTimeInputEdit;
+            }
+        }
+        
+        public UIPostContentPane UIPostContentPane
+        {
+            get
+            {
+                if ((this.mUIPostContentPane == null))
+                {
+                    this.mUIPostContentPane = new UIPostContentPane(this);
+                }
+                return this.mUIPostContentPane;
+            }
+        }
+        
+        public HtmlSpan UIBeershebaPane
+        {
+            get
+            {
+                if ((this.mUIBeershebaPane == null))
+                {
+                    this.mUIBeershebaPane = new HtmlSpan(this);
+                    #region Search Criteria
+                    this.mUIBeershebaPane.SearchProperties[HtmlDiv.PropertyNames.Id] = null;
+                    this.mUIBeershebaPane.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
+                    this.mUIBeershebaPane.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Beersheba";
+                    this.mUIBeershebaPane.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
+                    this.mUIBeershebaPane.FilterProperties[HtmlDiv.PropertyNames.Class] = "pac-matched";
+                    this.mUIBeershebaPane.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "class=\"pac-matched\"";
+                    this.mUIBeershebaPane.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "244";
+                    this.mUIBeershebaPane.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIBeershebaPane;
+            }
+        }
+        
+        public HtmlDiv UIHaifaIsraelPane1
+        {
+            get
+            {
+                if ((this.mUIHaifaIsraelPane1 == null))
+                {
+                    this.mUIHaifaIsraelPane1 = new HtmlDiv(this);
+                    #region Search Criteria
+                    this.mUIHaifaIsraelPane1.SearchProperties[HtmlDiv.PropertyNames.Id] = null;
+                    this.mUIHaifaIsraelPane1.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
+                    this.mUIHaifaIsraelPane1.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "HaifaIsrael";
+                    this.mUIHaifaIsraelPane1.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
+                    this.mUIHaifaIsraelPane1.FilterProperties[HtmlDiv.PropertyNames.Class] = "pac-item";
+                    this.mUIHaifaIsraelPane1.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "class=\"pac-item\"";
+                    this.mUIHaifaIsraelPane1.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "228";
+                    this.mUIHaifaIsraelPane1.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIHaifaIsraelPane1;
+            }
+        }
+        
+        public UIPostContentLeftPane1 UIPostContentLeftPane1
+        {
+            get
+            {
+                if ((this.mUIPostContentLeftPane1 == null))
+                {
+                    this.mUIPostContentLeftPane1 = new UIPostContentLeftPane1(this);
+                }
+                return this.mUIPostContentLeftPane1;
+            }
+        }
+        
+        public UIPostContentPane1 UIPostContentPane1
+        {
+            get
+            {
+                if ((this.mUIPostContentPane1 == null))
+                {
+                    this.mUIPostContentPane1 = new UIPostContentPane1(this);
+                }
+                return this.mUIPostContentPane1;
+            }
+        }
+        
+        public HtmlEdit UIPostInputEdit
+        {
+            get
+            {
+                if ((this.mUIPostInputEdit == null))
+                {
+                    this.mUIPostInputEdit = new HtmlEdit(this);
+                    #region Search Criteria
+                    this.mUIPostInputEdit.SearchProperties[HtmlEdit.PropertyNames.Id] = "postInputSource";
+                    this.mUIPostInputEdit.SearchProperties[HtmlEdit.PropertyNames.Name] = "postInput";
+                    this.mUIPostInputEdit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
+                    this.mUIPostInputEdit.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
+                    this.mUIPostInputEdit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
+                    this.mUIPostInputEdit.FilterProperties[HtmlEdit.PropertyNames.Class] = "inputText";
+                    this.mUIPostInputEdit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"postInput\" class=\"inputText\" id=\"p";
+                    this.mUIPostInputEdit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "40";
+                    this.mUIPostInputEdit.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIPostInputEdit;
+            }
+        }
+        
+        public HtmlSpan UIBeershebaPane1
+        {
+            get
+            {
+                if ((this.mUIBeershebaPane1 == null))
+                {
+                    this.mUIBeershebaPane1 = new HtmlSpan(this);
+                    #region Search Criteria
+                    this.mUIBeershebaPane1.SearchProperties[HtmlDiv.PropertyNames.Id] = null;
+                    this.mUIBeershebaPane1.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
+                    this.mUIBeershebaPane1.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Beersheba";
+                    this.mUIBeershebaPane1.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
+                    this.mUIBeershebaPane1.FilterProperties[HtmlDiv.PropertyNames.Class] = "pac-matched";
+                    this.mUIBeershebaPane1.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "class=\"pac-matched\"";
+                    this.mUIBeershebaPane1.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "255";
+                    this.mUIBeershebaPane1.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIBeershebaPane1;
+            }
+        }
+        
+        public HtmlEdit UIPostInputEdit1
+        {
+            get
+            {
+                if ((this.mUIPostInputEdit1 == null))
+                {
+                    this.mUIPostInputEdit1 = new HtmlEdit(this);
+                    #region Search Criteria
+                    this.mUIPostInputEdit1.SearchProperties[HtmlEdit.PropertyNames.Id] = "postInputDest";
+                    this.mUIPostInputEdit1.SearchProperties[HtmlEdit.PropertyNames.Name] = "postInput";
+                    this.mUIPostInputEdit1.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
+                    this.mUIPostInputEdit1.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
+                    this.mUIPostInputEdit1.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
+                    this.mUIPostInputEdit1.FilterProperties[HtmlEdit.PropertyNames.Class] = "inputText";
+                    this.mUIPostInputEdit1.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"postInput\" class=\"inputText\" id=\"p";
+                    this.mUIPostInputEdit1.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "41";
+                    this.mUIPostInputEdit1.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIPostInputEdit1;
+            }
+        }
+        
+        public HtmlSpan UIIsraelPane1
+        {
+            get
+            {
+                if ((this.mUIIsraelPane1 == null))
+                {
+                    this.mUIIsraelPane1 = new HtmlSpan(this);
+                    #region Search Criteria
+                    this.mUIIsraelPane1.SearchProperties[HtmlDiv.PropertyNames.Id] = null;
+                    this.mUIIsraelPane1.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
+                    this.mUIIsraelPane1.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Israel";
+                    this.mUIIsraelPane1.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
+                    this.mUIIsraelPane1.FilterProperties[HtmlDiv.PropertyNames.Class] = null;
+                    this.mUIIsraelPane1.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = null;
+                    this.mUIIsraelPane1.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "256";
+                    this.mUIIsraelPane1.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIIsraelPane1;
+            }
+        }
+        
+        public HtmlRadioButton UINORadioButton1
+        {
+            get
+            {
+                if ((this.mUINORadioButton1 == null))
+                {
+                    this.mUINORadioButton1 = new HtmlRadioButton(this);
+                    #region Search Criteria
+                    this.mUINORadioButton1.SearchProperties[HtmlRadioButton.PropertyNames.Id] = "PostSmokeNo";
+                    this.mUINORadioButton1.SearchProperties[HtmlRadioButton.PropertyNames.Name] = "postRadio";
+                    this.mUINORadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.Value] = "on";
+                    this.mUINORadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.LabeledBy] = "No ";
+                    this.mUINORadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.Title] = null;
+                    this.mUINORadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.ItemCount] = "3";
+                    this.mUINORadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.Class] = "radioInput";
+                    this.mUINORadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.ControlDefinition] = "name=\"postRadio\" class=\"radioInput\" id=\"";
+                    this.mUINORadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.TagInstance] = "43";
+                    this.mUINORadioButton1.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUINORadioButton1;
+            }
+        }
+        
+        public HtmlRadioButton UIYesRadioButton1
+        {
+            get
+            {
+                if ((this.mUIYesRadioButton1 == null))
+                {
+                    this.mUIYesRadioButton1 = new HtmlRadioButton(this);
+                    #region Search Criteria
+                    this.mUIYesRadioButton1.SearchProperties[HtmlRadioButton.PropertyNames.Id] = "PostSmokeYes";
+                    this.mUIYesRadioButton1.SearchProperties[HtmlRadioButton.PropertyNames.Name] = "postRadio";
+                    this.mUIYesRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.Value] = "on";
+                    this.mUIYesRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.LabeledBy] = "Yes ";
+                    this.mUIYesRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.Title] = null;
+                    this.mUIYesRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.ItemCount] = "3";
+                    this.mUIYesRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.Class] = "radioInput";
+                    this.mUIYesRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.ControlDefinition] = "name=\"postRadio\" class=\"radioInput\" id=\"";
+                    this.mUIYesRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.TagInstance] = "42";
+                    this.mUIYesRadioButton1.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIYesRadioButton1;
+            }
+        }
+        
+        public HtmlRadioButton UIDontcareRadioButton1
+        {
+            get
+            {
+                if ((this.mUIDontcareRadioButton1 == null))
+                {
+                    this.mUIDontcareRadioButton1 = new HtmlRadioButton(this);
+                    #region Search Criteria
+                    this.mUIDontcareRadioButton1.SearchProperties[HtmlRadioButton.PropertyNames.Id] = "PostSmokeDontCare";
+                    this.mUIDontcareRadioButton1.SearchProperties[HtmlRadioButton.PropertyNames.Name] = "postRadio";
+                    this.mUIDontcareRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.Value] = "on";
+                    this.mUIDontcareRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.LabeledBy] = "Dont care ";
+                    this.mUIDontcareRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.Title] = null;
+                    this.mUIDontcareRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.ItemCount] = "3";
+                    this.mUIDontcareRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.Class] = "radioInput";
+                    this.mUIDontcareRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.ControlDefinition] = "name=\"postRadio\" class=\"radioInput\" id=\"";
+                    this.mUIDontcareRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.TagInstance] = "44";
+                    this.mUIDontcareRadioButton1.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIDontcareRadioButton1;
+            }
+        }
+        
+        public HtmlRadioButton UIBigbagRadioButton1
+        {
+            get
+            {
+                if ((this.mUIBigbagRadioButton1 == null))
+                {
+                    this.mUIBigbagRadioButton1 = new HtmlRadioButton(this);
+                    #region Search Criteria
+                    this.mUIBigbagRadioButton1.SearchProperties[HtmlRadioButton.PropertyNames.Id] = "post1bad";
+                    this.mUIBigbagRadioButton1.SearchProperties[HtmlRadioButton.PropertyNames.Name] = "postRadio2";
+                    this.mUIBigbagRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.Value] = "on";
+                    this.mUIBigbagRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.LabeledBy] = "Big bag ";
+                    this.mUIBigbagRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.Title] = null;
+                    this.mUIBigbagRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.ItemCount] = "2";
+                    this.mUIBigbagRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.Class] = "radioInput";
+                    this.mUIBigbagRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.ControlDefinition] = "name=\"postRadio2\" class=\"radioInput\" id=";
+                    this.mUIBigbagRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.TagInstance] = "45";
+                    this.mUIBigbagRadioButton1.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIBigbagRadioButton1;
+            }
+        }
+        
+        public HtmlRadioButton UINoneSmallbagRadioButton1
+        {
+            get
+            {
+                if ((this.mUINoneSmallbagRadioButton1 == null))
+                {
+                    this.mUINoneSmallbagRadioButton1 = new HtmlRadioButton(this);
+                    #region Search Criteria
+                    this.mUINoneSmallbagRadioButton1.SearchProperties[HtmlRadioButton.PropertyNames.Id] = "post0bag";
+                    this.mUINoneSmallbagRadioButton1.SearchProperties[HtmlRadioButton.PropertyNames.Name] = "postRadio2";
+                    this.mUINoneSmallbagRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.Value] = "on";
+                    this.mUINoneSmallbagRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.LabeledBy] = "None/Small bag ";
+                    this.mUINoneSmallbagRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.Title] = null;
+                    this.mUINoneSmallbagRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.ItemCount] = "2";
+                    this.mUINoneSmallbagRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.Class] = "radioInput";
+                    this.mUINoneSmallbagRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.ControlDefinition] = "name=\"postRadio2\" class=\"radioInput\" id=";
+                    this.mUINoneSmallbagRadioButton1.FilterProperties[HtmlRadioButton.PropertyNames.TagInstance] = "46";
+                    this.mUINoneSmallbagRadioButton1.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUINoneSmallbagRadioButton1;
+            }
+        }
+        
+        public HtmlEdit UIDateEdit1
+        {
+            get
+            {
+                if ((this.mUIDateEdit1 == null))
+                {
+                    this.mUIDateEdit1 = new HtmlEdit(this);
+                    #region Search Criteria
+                    this.mUIDateEdit1.SearchProperties[HtmlEdit.PropertyNames.Id] = "postDateInput";
+                    this.mUIDateEdit1.SearchProperties[HtmlEdit.PropertyNames.Name] = "Date";
+                    this.mUIDateEdit1.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
+                    this.mUIDateEdit1.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
+                    this.mUIDateEdit1.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
+                    this.mUIDateEdit1.FilterProperties[HtmlEdit.PropertyNames.Class] = "inputText";
+                    this.mUIDateEdit1.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"Date\" class=\"inputText\" id=\"postDa";
+                    this.mUIDateEdit1.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "37";
+                    this.mUIDateEdit1.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIDateEdit1;
+            }
+        }
+        
+        public HtmlEdit UIPostFromTimeInputEdit1
+        {
+            get
+            {
+                if ((this.mUIPostFromTimeInputEdit1 == null))
+                {
+                    this.mUIPostFromTimeInputEdit1 = new HtmlEdit(this);
+                    #region Search Criteria
+                    this.mUIPostFromTimeInputEdit1.SearchProperties[HtmlEdit.PropertyNames.Id] = "postFromTimeInput";
+                    this.mUIPostFromTimeInputEdit1.SearchProperties[HtmlEdit.PropertyNames.Name] = null;
+                    this.mUIPostFromTimeInputEdit1.SearchProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
+                    this.mUIPostFromTimeInputEdit1.SearchProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
+                    this.mUIPostFromTimeInputEdit1.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
+                    this.mUIPostFromTimeInputEdit1.FilterProperties[HtmlEdit.PropertyNames.Class] = "inputText timeInput";
+                    this.mUIPostFromTimeInputEdit1.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "class=\"inputText timeInput\" id=\"postFrom";
+                    this.mUIPostFromTimeInputEdit1.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "38";
+                    this.mUIPostFromTimeInputEdit1.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIPostFromTimeInputEdit1;
+            }
+        }
+        
+        public HtmlEdit UIPostToTimeInputEdit1
+        {
+            get
+            {
+                if ((this.mUIPostToTimeInputEdit1 == null))
+                {
+                    this.mUIPostToTimeInputEdit1 = new HtmlEdit(this);
+                    #region Search Criteria
+                    this.mUIPostToTimeInputEdit1.SearchProperties[HtmlEdit.PropertyNames.Id] = "postToTimeInput";
+                    this.mUIPostToTimeInputEdit1.SearchProperties[HtmlEdit.PropertyNames.Name] = null;
+                    this.mUIPostToTimeInputEdit1.SearchProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
+                    this.mUIPostToTimeInputEdit1.SearchProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
+                    this.mUIPostToTimeInputEdit1.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
+                    this.mUIPostToTimeInputEdit1.FilterProperties[HtmlEdit.PropertyNames.Class] = "inputText timeInput";
+                    this.mUIPostToTimeInputEdit1.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "class=\"inputText timeInput\" id=\"postToTi";
+                    this.mUIPostToTimeInputEdit1.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "39";
+                    this.mUIPostToTimeInputEdit1.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIPostToTimeInputEdit1;
+            }
+        }
+        
+        public UIPostContentPane2 UIPostContentPane2
+        {
+            get
+            {
+                if ((this.mUIPostContentPane2 == null))
+                {
+                    this.mUIPostContentPane2 = new UIPostContentPane2(this);
+                }
+                return this.mUIPostContentPane2;
+            }
+        }
+        
+        public HtmlEdit UIPublishInputEdit
+        {
+            get
+            {
+                if ((this.mUIPublishInputEdit == null))
+                {
+                    this.mUIPublishInputEdit = new HtmlEdit(this);
+                    #region Search Criteria
+                    this.mUIPublishInputEdit.SearchProperties[HtmlEdit.PropertyNames.Id] = "inputSource";
+                    this.mUIPublishInputEdit.SearchProperties[HtmlEdit.PropertyNames.Name] = "publishInput";
+                    this.mUIPublishInputEdit.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
+                    this.mUIPublishInputEdit.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
+                    this.mUIPublishInputEdit.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
+                    this.mUIPublishInputEdit.FilterProperties[HtmlEdit.PropertyNames.Class] = "inputText";
+                    this.mUIPublishInputEdit.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"publishInput\" class=\"inputText\" id";
+                    this.mUIPublishInputEdit.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "57";
+                    this.mUIPublishInputEdit.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIPublishInputEdit;
+            }
+        }
+        
+        public HtmlEdit UIPublishInputEdit1
+        {
+            get
+            {
+                if ((this.mUIPublishInputEdit1 == null))
+                {
+                    this.mUIPublishInputEdit1 = new HtmlEdit(this);
+                    #region Search Criteria
+                    this.mUIPublishInputEdit1.SearchProperties[HtmlEdit.PropertyNames.Id] = "inputStopOver";
+                    this.mUIPublishInputEdit1.SearchProperties[HtmlEdit.PropertyNames.Name] = "publishInput";
+                    this.mUIPublishInputEdit1.FilterProperties[HtmlEdit.PropertyNames.LabeledBy] = null;
+                    this.mUIPublishInputEdit1.FilterProperties[HtmlEdit.PropertyNames.Type] = "SINGLELINE";
+                    this.mUIPublishInputEdit1.FilterProperties[HtmlEdit.PropertyNames.Title] = null;
+                    this.mUIPublishInputEdit1.FilterProperties[HtmlEdit.PropertyNames.Class] = "inputText";
+                    this.mUIPublishInputEdit1.FilterProperties[HtmlEdit.PropertyNames.ControlDefinition] = "name=\"publishInput\" class=\"inputText\" id";
+                    this.mUIPublishInputEdit1.FilterProperties[HtmlEdit.PropertyNames.TagInstance] = "59";
+                    this.mUIPublishInputEdit1.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIPublishInputEdit1;
+            }
+        }
         #endregion
         
         #region Fields
@@ -1871,6 +2539,74 @@ namespace WebSiteGUITests
         private HtmlDiv mUIPublishRidePane;
         
         private HtmlCustom mUIAHomeCustom1;
+        
+        private HtmlEdit mUIDateEdit;
+        
+        private HtmlRadioButton mUINORadioButton;
+        
+        private HtmlRadioButton mUIYesRadioButton;
+        
+        private UIPostContentLeftPane mUIPostContentLeftPane;
+        
+        private HtmlRadioButton mUIDontcareRadioButton;
+        
+        private HtmlRadioButton mUIBigbagRadioButton;
+        
+        private HtmlRadioButton mUINoneSmallbagRadioButton;
+        
+        private HtmlEdit mUIPostInputEditSource;
+        
+        private HtmlDiv mUIBeershebaIsraelPane;
+        
+        private HtmlSpan mUIIsraelPane;
+        
+        private HtmlEdit mUIPostInputEditDestination;
+        
+        private HtmlDiv mUIHaifaIsraelPane;
+        
+        private HtmlEdit mUIPostFromTimeInputEdit;
+        
+        private HtmlEdit mUIPostToTimeInputEdit;
+        
+        private UIPostContentPane mUIPostContentPane;
+        
+        private HtmlSpan mUIBeershebaPane;
+        
+        private HtmlDiv mUIHaifaIsraelPane1;
+        
+        private UIPostContentLeftPane1 mUIPostContentLeftPane1;
+        
+        private UIPostContentPane1 mUIPostContentPane1;
+        
+        private HtmlEdit mUIPostInputEdit;
+        
+        private HtmlSpan mUIBeershebaPane1;
+        
+        private HtmlEdit mUIPostInputEdit1;
+        
+        private HtmlSpan mUIIsraelPane1;
+        
+        private HtmlRadioButton mUINORadioButton1;
+        
+        private HtmlRadioButton mUIYesRadioButton1;
+        
+        private HtmlRadioButton mUIDontcareRadioButton1;
+        
+        private HtmlRadioButton mUIBigbagRadioButton1;
+        
+        private HtmlRadioButton mUINoneSmallbagRadioButton1;
+        
+        private HtmlEdit mUIDateEdit1;
+        
+        private HtmlEdit mUIPostFromTimeInputEdit1;
+        
+        private HtmlEdit mUIPostToTimeInputEdit1;
+        
+        private UIPostContentPane2 mUIPostContentPane2;
+        
+        private HtmlEdit mUIPublishInputEdit;
+        
+        private HtmlEdit mUIPublishInputEdit1;
         #endregion
     }
     
@@ -2019,6 +2755,249 @@ namespace WebSiteGUITests
     }
     
     [GeneratedCode("Coded UITest Builder", "12.0.31101.0")]
+    public class UIPostContentLeftPane : HtmlDiv
+    {
+        
+        public UIPostContentLeftPane(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[HtmlDiv.PropertyNames.Id] = "postContentLeft";
+            this.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
+            this.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Source :  \r\n\r\nDestination :  \r\n\r\n\r\nSmoki";
+            this.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
+            this.FilterProperties[HtmlDiv.PropertyNames.Class] = null;
+            this.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "id=\"postContentLeft\"";
+            this.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "120";
+            this.WindowTitles.Add("RideShare");
+            #endregion
+        }
+        
+        #region Properties
+        public HtmlDiv UISmokingYesNoDontcarePane
+        {
+            get
+            {
+                if ((this.mUISmokingYesNoDontcarePane == null))
+                {
+                    this.mUISmokingYesNoDontcarePane = new HtmlDiv(this);
+                    #region Search Criteria
+                    this.mUISmokingYesNoDontcarePane.SearchProperties[HtmlDiv.PropertyNames.Id] = null;
+                    this.mUISmokingYesNoDontcarePane.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
+                    this.mUISmokingYesNoDontcarePane.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Smoking :  Yes   No   Dont care  \r\n\r\nBag";
+                    this.mUISmokingYesNoDontcarePane.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
+                    this.mUISmokingYesNoDontcarePane.FilterProperties[HtmlDiv.PropertyNames.Class] = "radioDiv";
+                    this.mUISmokingYesNoDontcarePane.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "class=\"radioDiv\"";
+                    this.mUISmokingYesNoDontcarePane.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "121";
+                    this.mUISmokingYesNoDontcarePane.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUISmokingYesNoDontcarePane;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private HtmlDiv mUISmokingYesNoDontcarePane;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "12.0.31101.0")]
+    public class UIPostContentPane : HtmlDiv
+    {
+        
+        public UIPostContentPane(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[HtmlDiv.PropertyNames.Id] = "postContent";
+            this.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
+            this.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Date :  \r\n\r\nFrom Time :  \r\n\r\nTo Time :  ";
+            this.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
+            this.FilterProperties[HtmlDiv.PropertyNames.Class] = null;
+            this.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "id=\"postContent\"";
+            this.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "118";
+            this.WindowTitles.Add("RideShare");
+            #endregion
+        }
+        
+        #region Properties
+        public HtmlInputButton UIPostButton
+        {
+            get
+            {
+                if ((this.mUIPostButton == null))
+                {
+                    this.mUIPostButton = new HtmlInputButton(this);
+                    #region Search Criteria
+                    this.mUIPostButton.SearchProperties[HtmlButton.PropertyNames.Id] = null;
+                    this.mUIPostButton.SearchProperties[HtmlButton.PropertyNames.Name] = null;
+                    this.mUIPostButton.SearchProperties[HtmlButton.PropertyNames.DisplayText] = "Post";
+                    this.mUIPostButton.SearchProperties[HtmlButton.PropertyNames.Type] = "button";
+                    this.mUIPostButton.FilterProperties[HtmlButton.PropertyNames.Title] = null;
+                    this.mUIPostButton.FilterProperties[HtmlButton.PropertyNames.Class] = "publishPostButton btn";
+                    this.mUIPostButton.FilterProperties[HtmlButton.PropertyNames.ControlDefinition] = "class=\"publishPostButton btn\" onclick=\"p";
+                    this.mUIPostButton.FilterProperties[HtmlButton.PropertyNames.TagInstance] = "11";
+                    this.mUIPostButton.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIPostButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private HtmlInputButton mUIPostButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "12.0.31101.0")]
+    public class UIPostContentLeftPane1 : HtmlDiv
+    {
+        
+        public UIPostContentLeftPane1(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[HtmlDiv.PropertyNames.Id] = "postContentLeft";
+            this.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
+            this.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Source :  \r\n\r\nDestination :  \r\n\r\n\r\nSmoki";
+            this.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
+            this.FilterProperties[HtmlDiv.PropertyNames.Class] = null;
+            this.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "id=\"postContentLeft\"";
+            this.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "127";
+            this.WindowTitles.Add("RideShare");
+            #endregion
+        }
+        
+        #region Properties
+        public HtmlDiv UISmokingYesNoDontcarePane
+        {
+            get
+            {
+                if ((this.mUISmokingYesNoDontcarePane == null))
+                {
+                    this.mUISmokingYesNoDontcarePane = new HtmlDiv(this);
+                    #region Search Criteria
+                    this.mUISmokingYesNoDontcarePane.SearchProperties[HtmlDiv.PropertyNames.Id] = null;
+                    this.mUISmokingYesNoDontcarePane.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
+                    this.mUISmokingYesNoDontcarePane.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Smoking :  Yes   No   Dont care  \r\n\r\nBag";
+                    this.mUISmokingYesNoDontcarePane.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
+                    this.mUISmokingYesNoDontcarePane.FilterProperties[HtmlDiv.PropertyNames.Class] = "radioDiv";
+                    this.mUISmokingYesNoDontcarePane.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "class=\"radioDiv\"";
+                    this.mUISmokingYesNoDontcarePane.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "128";
+                    this.mUISmokingYesNoDontcarePane.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUISmokingYesNoDontcarePane;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private HtmlDiv mUISmokingYesNoDontcarePane;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "12.0.31101.0")]
+    public class UIPostContentPane1 : HtmlDiv
+    {
+        
+        public UIPostContentPane1(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[HtmlDiv.PropertyNames.Id] = "postContent";
+            this.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
+            this.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Date :  \r\n\r\nFrom Time :  \r\n\r\nTo Time :  ";
+            this.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
+            this.FilterProperties[HtmlDiv.PropertyNames.Class] = null;
+            this.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "id=\"postContent\"";
+            this.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "125";
+            this.WindowTitles.Add("RideShare");
+            #endregion
+        }
+        
+        #region Properties
+        public HtmlInputButton UIPostButton
+        {
+            get
+            {
+                if ((this.mUIPostButton == null))
+                {
+                    this.mUIPostButton = new HtmlInputButton(this);
+                    #region Search Criteria
+                    this.mUIPostButton.SearchProperties[HtmlButton.PropertyNames.Id] = null;
+                    this.mUIPostButton.SearchProperties[HtmlButton.PropertyNames.Name] = null;
+                    this.mUIPostButton.SearchProperties[HtmlButton.PropertyNames.DisplayText] = "Post";
+                    this.mUIPostButton.SearchProperties[HtmlButton.PropertyNames.Type] = "button";
+                    this.mUIPostButton.FilterProperties[HtmlButton.PropertyNames.Title] = null;
+                    this.mUIPostButton.FilterProperties[HtmlButton.PropertyNames.Class] = "publishPostButton btn";
+                    this.mUIPostButton.FilterProperties[HtmlButton.PropertyNames.ControlDefinition] = "class=\"publishPostButton btn\" onclick=\"p";
+                    this.mUIPostButton.FilterProperties[HtmlButton.PropertyNames.TagInstance] = "11";
+                    this.mUIPostButton.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIPostButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private HtmlInputButton mUIPostButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "12.0.31101.0")]
+    public class UIPostContentPane2 : HtmlDiv
+    {
+        
+        public UIPostContentPane2(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[HtmlDiv.PropertyNames.Id] = "postContent";
+            this.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
+            this.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Date :  \r\n\r\nFrom Time :  \r\n\r\nTo Time :  ";
+            this.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
+            this.FilterProperties[HtmlDiv.PropertyNames.Class] = null;
+            this.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "id=\"postContent\"";
+            this.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "128";
+            this.WindowTitles.Add("RideShare");
+            #endregion
+        }
+        
+        #region Properties
+        public HtmlInputButton UIPostButton
+        {
+            get
+            {
+                if ((this.mUIPostButton == null))
+                {
+                    this.mUIPostButton = new HtmlInputButton(this);
+                    #region Search Criteria
+                    this.mUIPostButton.SearchProperties[HtmlButton.PropertyNames.Id] = null;
+                    this.mUIPostButton.SearchProperties[HtmlButton.PropertyNames.Name] = null;
+                    this.mUIPostButton.SearchProperties[HtmlButton.PropertyNames.DisplayText] = "Post";
+                    this.mUIPostButton.SearchProperties[HtmlButton.PropertyNames.Type] = "button";
+                    this.mUIPostButton.FilterProperties[HtmlButton.PropertyNames.Title] = null;
+                    this.mUIPostButton.FilterProperties[HtmlButton.PropertyNames.Class] = "publishPostButton btn";
+                    this.mUIPostButton.FilterProperties[HtmlButton.PropertyNames.ControlDefinition] = "class=\"publishPostButton btn\" onclick=\"p";
+                    this.mUIPostButton.FilterProperties[HtmlButton.PropertyNames.TagInstance] = "11";
+                    this.mUIPostButton.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIPostButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private HtmlInputButton mUIPostButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "12.0.31101.0")]
     public class UIRideShareWindowsInteTitleBar : WinTitleBar
     {
         
@@ -2050,6 +3029,114 @@ namespace WebSiteGUITests
         
         #region Fields
         private WinButton mUICloseButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "12.0.31101.0")]
+    public class UITabRowTabList : WinTabList
+    {
+        
+        public UITabRowTabList(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinTabList.PropertyNames.Name] = "Tab Row";
+            this.WindowTitles.Add("RideShare");
+            #endregion
+        }
+        
+        #region Properties
+        public WinButton UINewTabCtrlTButton
+        {
+            get
+            {
+                if ((this.mUINewTabCtrlTButton == null))
+                {
+                    this.mUINewTabCtrlTButton = new WinButton(this);
+                    #region Search Criteria
+                    this.mUINewTabCtrlTButton.SearchProperties[WinButton.PropertyNames.Name] = "New Tab (Ctrl+T)";
+                    this.mUINewTabCtrlTButton.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUINewTabCtrlTButton;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinButton mUINewTabCtrlTButton;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "12.0.31101.0")]
+    public class UIAddressBarClient : WinClient
+    {
+        
+        public UIAddressBarClient(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinControl.PropertyNames.Name] = "Address Bar";
+            this.WindowTitles.Add("New Tab");
+            #endregion
+        }
+        
+        #region Properties
+        public WinEdit UIAddressandsearchusinEdit
+        {
+            get
+            {
+                if ((this.mUIAddressandsearchusinEdit == null))
+                {
+                    this.mUIAddressandsearchusinEdit = new WinEdit(this);
+                    #region Search Criteria
+                    this.mUIAddressandsearchusinEdit.SearchProperties[WinEdit.PropertyNames.Name] = "Address and search using Google";
+                    this.mUIAddressandsearchusinEdit.WindowTitles.Add("New Tab");
+                    #endregion
+                }
+                return this.mUIAddressandsearchusinEdit;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinEdit mUIAddressandsearchusinEdit;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "12.0.31101.0")]
+    public class UIAddressComboControlToolBar : WinToolBar
+    {
+        
+        public UIAddressComboControlToolBar(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[WinToolBar.PropertyNames.Name] = "Address Combo Control";
+            this.WindowTitles.Add("New Tab");
+            #endregion
+        }
+        
+        #region Properties
+        public WinMenuItem UIItemMenuItem
+        {
+            get
+            {
+                if ((this.mUIItemMenuItem == null))
+                {
+                    this.mUIItemMenuItem = new WinMenuItem(this);
+                    #region Search Criteria
+                    this.mUIItemMenuItem.SearchProperties[WinMenuItem.PropertyNames.Instance] = "2";
+                    this.mUIItemMenuItem.WindowTitles.Add("New Tab");
+                    #endregion
+                }
+                return this.mUIItemMenuItem;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private WinMenuItem mUIItemMenuItem;
         #endregion
     }
     
