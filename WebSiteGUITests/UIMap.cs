@@ -99,6 +99,73 @@
             Mouse.Click(uIPostButton, new Point(68, 12));
         }
 
+        /// <summary>
+        /// PublishRide - Use 'PublishRideParams' to pass parameters into this method.
+        /// </summary>
+        public void PublishRide(Smoking smoking)
+        {
+            #region Variable Declarations
+            HtmlEdit uIPublishInputEdit = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIPublishInputEdit;
+            HtmlEdit uIPublishInputEdit11 = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIPublishInputEdit11;
+            HtmlSpan uIDestinationPane = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIPublishContentLeftPane.UIDestinationPane;
+            HtmlEdit uIDateEdit2 = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIDateEdit2;
+            HtmlDiv uIPublishContentRightPane = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIPublishContentRightPane;
+            HtmlEdit uIPublishFromTimeInputEdit = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIPublishFromTimeInputEdit;
+            HtmlEdit uIPublishToTimeInputEdit = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIPublishToTimeInputEdit;
+            HtmlRadioButton uINORadioButton2 = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UINORadioButton2;
+            HtmlRadioButton uIYesRadioButton2 = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIYesRadioButton2;
+            HtmlRadioButton uIDontcareRadioButton2 = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIDontcareRadioButton2;
+            HtmlEdit uIPostInputEdit2 = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIPostInputEdit2;
+            HtmlEdit uIPublishInputEdit2 = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIPublishInputEdit2;
+            HtmlInputButton uIPublishButton = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIPublishButton;
+            #endregion
+
+            // Type 'Beersheba, Israel' in 'publishInput' text box
+            uIPublishInputEdit.Text = this.PublishRideParams.UIPublishInputEditText;
+            Thread.Sleep(2000);
+            Keyboard.SendKeys("{Down}");
+            Keyboard.SendKeys("{Enter}");
+
+            // Type 'Haifa, Israel' in 'publishInput' text box
+            uIPublishInputEdit11.Text = this.PublishRideParams.UIPublishInputEdit11Text;
+            Thread.Sleep(2000);
+            Keyboard.SendKeys("{Down}");
+            Keyboard.SendKeys("{Enter}");
+
+            // Type '2015-07-29' in 'Date' text box
+            uIDateEdit2.Text = this.PublishRideParams.UIDateEdit2Text;
+
+            // Click 'publishContentRight' pane
+            Mouse.Click(uIPublishContentRightPane, new Point(102, 101));
+
+            // Type '18:49' in 'publishFromTimeInput' text box
+            uIPublishFromTimeInputEdit.Text = this.PublishRideParams.UIPublishFromTimeInputEditText;
+
+            // Type '18:49' in 'publishToTimeInput' text box
+            uIPublishToTimeInputEdit.Text = this.PublishRideParams.UIPublishToTimeInputEditText;
+
+            // Select 'No' radio button
+            if (smoking == Smoking.no)
+                uINORadioButton2.Selected = this.PublishRideParams.UINORadioButton2Selected;
+
+            // Select 'Yes' radio button
+            if(smoking == Smoking.yes)
+                uIYesRadioButton2.Selected = this.PublishRideParams.UIYesRadioButton2Selected;
+
+            // Select 'Dont care' radio button
+            if (smoking == Smoking.dontCare)
+                uIDontcareRadioButton2.Selected = this.PublishRideParams.UIDontcareRadioButton2Selected;
+
+            // Type '4' in 'postInput' text box
+            uIPostInputEdit2.Text = this.PublishRideParams.UIPostInputEdit2Text;
+
+            // Type '40' in 'publishInput' text box
+            uIPublishInputEdit2.Text = this.PublishRideParams.UIPublishInputEdit2Text;
+
+            // Click 'Publish' button
+            Mouse.Click(uIPublishButton, new Point(83, 10));
+        }
+
         public virtual PostRequestParams PostRequestParams
         {
             get
@@ -199,6 +266,31 @@
             Keyboard.SendKeys("{Enter}");
         }
 
+        public string GetFirstStop()
+        {
+            return this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIFirsOutCustom.InnerText;
+        }
+
+        public string GetSecondStop()
+        {
+            return this.UIRideShareWindowsInteWindow.UIRideShareDocument.UISecondOutCustom.InnerText;
+        }
+
+        public string GetThridStop()
+        {
+            return this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIThirdOutCustom.InnerText;
+        }
+
+        public string GetFourthStop()
+        {
+            return this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIFourthOutCustom.InnerText;
+        }
+
+        public string GetFifthStop()
+        {
+            return this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIFifthOutCustom.InnerText;
+        }
+
         public virtual AddStopParams AddStopParams
         {
             get
@@ -212,6 +304,20 @@
         }
 
         private AddStopParams mAddStopParams;
+
+        public virtual PublishRideParams PublishRideParams
+        {
+            get
+            {
+                if ((this.mPublishRideParams == null))
+                {
+                    this.mPublishRideParams = new PublishRideParams();
+                }
+                return this.mPublishRideParams;
+            }
+        }
+
+        private PublishRideParams mPublishRideParams;
     }
     /// <summary>
     /// Parameters to be passed into 'PostRequest'
@@ -328,6 +434,75 @@
         /// Type '{Enter}' in 'publishInput' text box
         /// </summary>
         public string UIPublishInputEdit1SendKeys = "{Enter}";
+        #endregion
+    }
+    /// <summary>
+    /// Parameters to be passed into 'PublishRide'
+    /// </summary>
+    [GeneratedCode("Coded UITest Builder", "12.0.31101.0")]
+    public class PublishRideParams
+    {
+
+        #region Fields
+        /// <summary>
+        /// Type 'Beersheba, Israel' in 'publishInput' text box
+        /// </summary>
+        public string UIPublishInputEditText = "Beersheba, Israel";
+
+        /// <summary>
+        /// Type '{Enter}' in 'publishInput' text box
+        /// </summary>
+        public string UIPublishInputEditSendKeys = "{Enter}";
+
+        /// <summary>
+        /// Type 'Haifa, Israel' in 'publishInput' text box
+        /// </summary>
+        public string UIPublishInputEdit11Text = "Haifa, Israel";
+
+        /// <summary>
+        /// Type '{Enter}' in 'publishInput' text box
+        /// </summary>
+        public string UIPublishInputEdit11SendKeys = "{Enter}";
+
+        /// <summary>
+        /// Type '2015-07-29' in 'Date' text box
+        /// </summary>
+        public string UIDateEdit2Text = "2015-07-29";
+
+        /// <summary>
+        /// Type '18:49' in 'publishFromTimeInput' text box
+        /// </summary>
+        public string UIPublishFromTimeInputEditText = "18:49";
+
+        /// <summary>
+        /// Type '18:49' in 'publishToTimeInput' text box
+        /// </summary>
+        public string UIPublishToTimeInputEditText = "18:49";
+
+        /// <summary>
+        /// Select 'No' radio button
+        /// </summary>
+        public bool UINORadioButton2Selected = true;
+
+        /// <summary>
+        /// Select 'Yes' radio button
+        /// </summary>
+        public bool UIYesRadioButton2Selected = true;
+
+        /// <summary>
+        /// Select 'Dont care' radio button
+        /// </summary>
+        public bool UIDontcareRadioButton2Selected = true;
+
+        /// <summary>
+        /// Type '4' in 'postInput' text box
+        /// </summary>
+        public string UIPostInputEdit2Text = "4";
+
+        /// <summary>
+        /// Type '40' in 'publishInput' text box
+        /// </summary>
+        public string UIPublishInputEdit2Text = "40";
         #endregion
 }
 }

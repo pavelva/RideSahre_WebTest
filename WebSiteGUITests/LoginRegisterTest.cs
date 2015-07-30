@@ -20,8 +20,6 @@ namespace WebSiteGUITests
     [CodedUITest]
     public class LoginRegisterTest : RideShareWebSiteTests
     {
-        
-
         public LoginRegisterTest() : base()
         {
             
@@ -48,7 +46,6 @@ namespace WebSiteGUITests
         [TestMethod]
         public void TestOpenRegisterPanel()
         {
-
             adapter.OpenRegisterPanel();
             assert.AssertRegisterPanel();
 
@@ -220,5 +217,10 @@ namespace WebSiteGUITests
         //}
 
         //private UIMap map;
+
+        protected override void TestInitialize()
+        {
+            return;
+        }
     }
 }

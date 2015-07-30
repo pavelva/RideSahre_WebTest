@@ -22,9 +22,9 @@ namespace WebSiteGUITests.RideShare.Data
         public string destination;
         public string fromTime;
         public string toTime;
+        public Smoking smoking;
 
         protected string _date;
-        protected bool[] _smoking;
 
         public Publish()
         {
@@ -38,28 +38,12 @@ namespace WebSiteGUITests.RideShare.Data
             this._date = "";
             this.fromTime = "";
             this.toTime = "";
-
-            setSmoking(Smoking.dontCare);
+            this.smoking = Smoking.dontCare;
 
             classInit();
         }
 
         protected abstract void classInit();
-
-        public void setSmoking(Smoking s)
-        {
-            this._smoking = new bool[3] { false, false, false };
-            this._smoking[(int)s] = true;
-        }
-
-
-        public Smoking smoking
-        {
-            get
-            {
-                return this._smoking[0] ? Smoking.yes : this._smoking[1] ? Smoking.no : Smoking.dontCare;
-            }
-        }
 
         public string date
         {
@@ -72,6 +56,11 @@ namespace WebSiteGUITests.RideShare.Data
         public void setDate(int day, int month, int year)
         {
             this._date = year + "-" + (month < 10 ? "0" : "") + month + "-" + (day < 10 ? "0" : "") + day;
+        }
+
+        public virtual void Clear()
+        {
+            init();
         }
     }
 }

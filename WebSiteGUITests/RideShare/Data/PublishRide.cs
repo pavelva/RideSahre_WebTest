@@ -9,8 +9,8 @@ namespace WebSiteGUITests.RideShare.Data
     public class PublishRide : Publish
     {
         public string[] stops;
-        public int maxPassengers;
-        public int price;
+        public string maxPassengers;
+        public string price;
 
         public PublishRide():base()
         {
@@ -19,8 +19,15 @@ namespace WebSiteGUITests.RideShare.Data
         protected override void classInit()
         {
             this.stops = new string[4] {"","","","" };
-            this.maxPassengers = 4;
-            this.price = 60;
+            this.maxPassengers = "4";
+            this.price = "60";
+        }
+
+        public override void Clear()
+        {
+            base.Clear();
+            this.maxPassengers = "";
+            this.price = "";
         }
     }
 }

@@ -26,7 +26,6 @@ namespace WebSiteGUITests
         [TestMethod]
         public void SearchRideLinkTest()
         {
-            adapter.Login(data.CorrectEmail, data.CorrectPassword);
             adapter.GoToSearchRide();
             assert.AssertSearchRidePage();
 
@@ -35,7 +34,6 @@ namespace WebSiteGUITests
         [TestMethod]
         public void PublishRideLinkTest()
         {
-            adapter.Login(data.CorrectEmail, data.CorrectPassword);
             adapter.GoToPublishRide();
             assert.AssertPublishRidePage();
 
@@ -44,7 +42,6 @@ namespace WebSiteGUITests
         [TestMethod]
         public void PostRequestLinkTest()
         {
-            adapter.Login(data.CorrectEmail, data.CorrectPassword);
             adapter.GoToPostRequest();
             assert.AssertPostRequestPage();
 
@@ -53,7 +50,6 @@ namespace WebSiteGUITests
         [TestMethod]
         public void MyRidesLinkTest()
         {
-            adapter.Login(data.CorrectEmail, data.CorrectPassword);
             adapter.GoToMyRides();
             assert.AssertMyRidesPage();
 
@@ -62,7 +58,6 @@ namespace WebSiteGUITests
         [TestMethod]
         public void HomeLinkTest()
         {
-            adapter.Login(data.CorrectEmail, data.CorrectPassword);
             adapter.GoToMyRides();
             adapter.GoToHome();
             assert.AssertHomePage();
@@ -72,8 +67,6 @@ namespace WebSiteGUITests
         [TestMethod]
         public void NavigationTest()
         {
-            adapter.Login(data.CorrectEmail, data.CorrectPassword);
-
             adapter.GoToMyRides();
             Thread.Sleep(1500); //allow link color to change
             assert.AssertMyRidesPage();
@@ -106,43 +99,10 @@ namespace WebSiteGUITests
             Thread.Sleep(1500); //allow link color to change
             assert.AssertPostRequestPage();
         }
-        
 
-        #region Additional test attributes
-
-        // You can use the following additional attributes as you write your tests:
-
-        ////Use TestInitialize to run code before running each test 
-        //[TestInitialize()]
-        //public void MyTestInitialize()
-        //{        
-        //    // To generate code for this test, select "Generate Code for Coded UI Test" from the shortcut menu and select one of the menu items.
-        //}
-
-        ////Use TestCleanup to run code after each test has run
-        //[TestCleanup()]
-        //public void MyTestCleanup()
-        //{        
-        //    // To generate code for this test, select "Generate Code for Coded UI Test" from the shortcut menu and select one of the menu items.
-        //}
-
-        #endregion
-
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        //public TestContext TestContext
-        //{
-        //    get
-        //    {
-        //        return testContextInstance;
-        //    }
-        //    set
-        //    {
-        //        testContextInstance = value;
-        //    }
-        //}
-        //private TestContext testContextInstance;
+        protected override void TestInitialize()
+        {
+            adapter.Login(data.CorrectEmail, data.CorrectPassword);
+        }
     }
 }

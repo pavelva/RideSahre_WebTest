@@ -95,5 +95,34 @@ namespace WebSiteGUITests.RideShare
         {
             this.UIMap.AssertRegisterPanel();
         }
+
+        public void AssertStop(int position, string text)
+        {
+            switch (position)
+            {
+                case 1:
+                    this.UIMap.AssertFirstStopExpectedValues.UIFirsOutCustomInnerText = text.ToLower();
+                    this.UIMap.AssertFirstStop();
+                    break;
+                case 2:
+                    this.UIMap.AssertSecondStopExpectedValues.UISecondOutCustomInnerText = text.ToLower();
+                    this.UIMap.AssertSecondStop();
+                    break;
+                case 3:
+                    this.UIMap.AssertThirdStopExpectedValues.UIThirdOutCustomInnerText = text.ToLower();
+                    this.UIMap.AssertThirdStop();
+                    break;
+                case 4:
+                    this.UIMap.AssertFourthStopExpectedValues.UIFourthOutCustomInnerText = text.ToLower();;
+                    this.UIMap.AssertFourthStop();
+                    break;
+                case 5:
+                    this.UIMap.AssertFifthStopExpectedValues.UIFifthOutCustomInnerText = text.ToLower();;
+                    this.UIMap.AssertFifthStop();
+                    break;
+                default:
+                    throw new Exception("Bad Assertion Arguments");
+            }
+        }
     }
 }

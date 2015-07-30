@@ -18,7 +18,7 @@ namespace WebSiteGUITests
     /// Summary description for CodedUITest1
     /// </summary>
     [CodedUITest]
-    public class RideShareWebSiteTests
+    public abstract class RideShareWebSiteTests
     {
         protected RideShareWebAdapter adapter;
         protected RideShareWebAssertion assert;
@@ -35,13 +35,6 @@ namespace WebSiteGUITests
         public void CodedUITestMethod1()
         {
             // To generate code for this test, select "Generate Code for Coded UI Test" from the shortcut menu and select one of the menu items.
-            adapter.Login(data.CorrectEmail, data.CorrectPassword);
-            adapter.GoToPublishRide();
-
-            adapter.addStop("haifa");
-            adapter.addStop("telaviv");
-            adapter.addStop("beersheva");
-
         }
 
         #region Additional test attributes
@@ -59,7 +52,11 @@ namespace WebSiteGUITests
                 adapter.Logout();
             }
             catch { }
+
+            TestInitialize();
         }
+
+        protected abstract void TestInitialize();
 
         ////Use TestCleanup to run code after each test has run
         [TestCleanup()]

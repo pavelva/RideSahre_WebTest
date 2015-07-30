@@ -29,11 +29,9 @@ namespace WebSiteGUITests
         [TestMethod]
         public void PostRequestEmptyFields()
         {
-            request.setSmoking(Smoking.yes);
-            request.setBags(Bags.big_bag);
+            request.smoking = Smoking.yes;
+            request.bags = Bags.big_bag;
 
-            adapter.Login(this.data.CorrectEmail, this.data.CorrectPassword);
-            adapter.GoToPostRequest();
             adapter.PostRequest(request);
 
             assert.MessageAssertion(this.data.BadSource);
@@ -42,12 +40,10 @@ namespace WebSiteGUITests
         [TestMethod]
         public void PostRequestEmptyFields_AllBut_Source()
         {
-            request.setSmoking(Smoking.yes);
-            request.setBags(Bags.big_bag);
+            request.smoking = Smoking.yes;
+            request.bags = Bags.big_bag;
             request.source = "beersheva";
 
-            adapter.Login(this.data.CorrectEmail, this.data.CorrectPassword);
-            adapter.GoToPostRequest();
             adapter.PostRequest(request);
 
             assert.MessageAssertion(this.data.BadDestination);
@@ -56,13 +52,11 @@ namespace WebSiteGUITests
         [TestMethod]
         public void PostRequestEmptyFields_AllBut_Source_Destination()
         {
-            request.setSmoking(Smoking.yes);
-            request.setBags(Bags.big_bag);
+            request.smoking = Smoking.yes;
+            request.bags = Bags.big_bag;
             request.source = "beersheva";
             request.destination = "haifa";
 
-            adapter.Login(this.data.CorrectEmail, this.data.CorrectPassword);
-            adapter.GoToPostRequest();
             adapter.PostRequest(request);
 
             assert.MessageAssertion(this.data.BadDate);
@@ -76,14 +70,12 @@ namespace WebSiteGUITests
             var month = now.Month;
             var day = now.Day;
 
-            request.setSmoking(Smoking.yes);
-            request.setBags(Bags.big_bag);
+            request.smoking = Smoking.yes;
+            request.bags = Bags.big_bag;
             request.source = "beersheva";
             request.destination = "haifa";
             request.setDate(day, month, year);
 
-            adapter.Login(this.data.CorrectEmail, this.data.CorrectPassword);
-            adapter.GoToPostRequest();
             adapter.PostRequest(request);
 
             assert.MessageAssertion(this.data.BadTimeInterval);
@@ -97,15 +89,13 @@ namespace WebSiteGUITests
             var month = now.Month;
             var day = now.Day;
 
-            request.setSmoking(Smoking.yes);
-            request.setBags(Bags.big_bag);
+            request.smoking = Smoking.yes;
+            request.bags = Bags.big_bag;
             request.source = "beersheva";
             request.destination = "haifa";
             request.setDate(day, month, year);
             request.fromTime = "14:00";
 
-            adapter.Login(this.data.CorrectEmail, this.data.CorrectPassword);
-            adapter.GoToPostRequest();
             adapter.PostRequest(request);
 
             assert.MessageAssertion(this.data.BadTimeInterval);
@@ -119,16 +109,14 @@ namespace WebSiteGUITests
             var month = now.Month;
             var day = now.Day;
 
-            request.setSmoking(Smoking.yes);
-            request.setBags(Bags.big_bag);
+            request.smoking = Smoking.yes;
+            request.bags = Bags.big_bag;
             request.source = "beersheva";
             request.destination = "haifa";
             request.setDate(day, month, year);
             request.fromTime = "14:00";
             request.toTime = "15:00";
 
-            adapter.Login(this.data.CorrectEmail, this.data.CorrectPassword);
-            adapter.GoToPostRequest();
             adapter.PostRequest(request);
 
             assert.MessageAssertion(this.data.BadDate);
@@ -142,16 +130,14 @@ namespace WebSiteGUITests
             var month = now.Month;
             var day = now.Day;
 
-            request.setSmoking(Smoking.yes);
-            request.setBags(Bags.big_bag);
+            request.smoking = Smoking.yes;
+            request.bags = Bags.big_bag;
             request.source = "beersheva";
             request.destination = "haifa";
             request.setDate(day, month, year);
             request.fromTime = "14:00";
             request.toTime = "11:00";
 
-            adapter.Login(this.data.CorrectEmail, this.data.CorrectPassword);
-            adapter.GoToPostRequest();
             adapter.PostRequest(request);
 
             assert.MessageAssertion(this.data.BadTimeInterval);
@@ -165,16 +151,14 @@ namespace WebSiteGUITests
             var month = now.Month;
             var day = now.Day;
 
-            request.setSmoking(Smoking.yes);
-            request.setBags(Bags.big_bag);
+            request.smoking = Smoking.yes;
+            request.bags = Bags.big_bag;
             request.source = "beersheva";
             request.destination = "haifa";
             request.setDate(day, month, year);
             request.fromTime = "14:00";
             request.toTime = "15:00";
 
-            adapter.Login(this.data.CorrectEmail, this.data.CorrectPassword);
-            adapter.GoToPostRequest();
             adapter.PostRequest(request);
 
             assert.AssertMyRidesPage();
@@ -198,5 +182,11 @@ namespace WebSiteGUITests
         //}
 
         #endregion
+
+        protected override void TestInitialize()
+        {
+            adapter.Login(data.CorrectEmail, data.CorrectPassword);
+            adapter.GoToPostRequest();
+        }
     }
 }

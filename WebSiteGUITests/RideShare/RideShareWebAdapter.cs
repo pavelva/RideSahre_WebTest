@@ -73,26 +73,31 @@ namespace WebSiteGUITests.RideShare
         internal void GoToSearchRide()
         {
             this.UIMap.GoToSearchRide();
+            Thread.Sleep(500);
         }
 
         internal void GoToPublishRide()
         {
             this.UIMap.GoToPublishRide();
+            Thread.Sleep(500);
         }
 
         internal void GoToPostRequest()
         {
             this.UIMap.GoToPostRequest();
+            Thread.Sleep(500);
         }
 
         internal void GoToMyRides()
         {
             this.UIMap.GoToMyRides();
+            Thread.Sleep(500);
         }
 
         internal void GoToHome()
         {
             this.UIMap.GoToHome();
+            Thread.Sleep(500);
         }
 
         public void PostRequest(PostRequest request)
@@ -116,11 +121,69 @@ namespace WebSiteGUITests.RideShare
             this.UIMap.PostRequest(request.smoking, request.bags);
         }
 
-        public void addStop(string stop)
+        public void AddStop(string stop)
         {
             this.UIMap.AddStopParams.UIPublishInputEdit1Text = stop;
 
             this.UIMap.AddStop();
+        }
+
+        public string GetStop(int position)
+        {
+            switch (position)
+            {
+                case 1:
+                    return this.UIMap.GetFirstStop();
+                case 2:
+                    return this.UIMap.GetSecondStop();
+                case 3:
+                    return this.UIMap.GetThridStop();
+                case 4:
+                    return this.UIMap.GetFourthStop();
+                case 5:
+                    return this.UIMap.GetFifthStop();
+                default:
+                    throw new Exception("Bad Arguments");
+            }
+        }
+
+        public void DeleteStop(int position)
+        {
+            switch (position)
+            {
+                case 1:
+                    this.UIMap.DeleteFirstStop();
+                    break;
+                case 2:
+                    this.UIMap.DeleteSecondStop();
+                    break;
+                case 3:
+                    this.UIMap.DeleteThirdStop();
+                    break;
+                case 4:
+                    this.UIMap.DeleteFourthStop();
+                    break;
+                case 5:
+                    this.UIMap.DeleteFifthStop();
+                    break;
+                default:
+                    throw new Exception("Bad Arguments");
+            }
+        }
+
+        public void PublishRide(PublishRide ride)
+        {
+            this.UIMap.PublishRideParams.UIPublishInputEditText = ride.source;
+            this.UIMap.PublishRideParams.UIPublishInputEdit11Text = ride.destination;
+
+            this.UIMap.PublishRideParams.UIDateEdit2Text = ride.date;
+            this.UIMap.PublishRideParams.UIPublishFromTimeInputEditText = ride.fromTime;
+            this.UIMap.PublishRideParams.UIPublishToTimeInputEditText = ride.toTime;
+
+            this.UIMap.PublishRideParams.UIPostInputEdit2Text = ride.maxPassengers;
+            this.UIMap.PublishRideParams.UIPublishInputEdit2Text = ride.price;
+
+            this.UIMap.PublishRide(ride.smoking);
         }
     }
 }
