@@ -31,6 +31,19 @@ namespace WebSiteGUITests
     {
         
         /// <summary>
+        /// Approve
+        /// </summary>
+        public void Approve()
+        {
+            #region Variable Declarations
+            HtmlInputButton uIYesButton1 = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIYesButton1;
+            #endregion
+
+            // Click 'Yes' button
+            Mouse.Click(uIYesButton1, new Point(61, 8));
+        }
+        
+        /// <summary>
         /// AssertFifthStop - Use 'AssertFifthStopExpectedValues' to pass parameters into this method.
         /// </summary>
         public void AssertFifthStop()
@@ -291,6 +304,19 @@ namespace WebSiteGUITests
 
             // Click 'Wrong email or password!' pane
             Mouse.Click(uIWrongemailorpasswordPane1, new Point(608, 724));
+        }
+        
+        /// <summary>
+        /// DeleteBtn
+        /// </summary>
+        public void DeleteBtn()
+        {
+            #region Variable Declarations
+            HtmlInputButton uIDeleteButton = this.UIRideShareWindowsInteWindow.UIRideShareDocument.UIDeleteButton;
+            #endregion
+
+            // Click 'Delete' button
+            Mouse.Click(uIDeleteButton, new Point(37, 5));
         }
         
         /// <summary>
@@ -3221,6 +3247,76 @@ namespace WebSiteGUITests
                 return this.mUIPublishButton;
             }
         }
+        
+        public HtmlInputButton UIDeleteButton
+        {
+            get
+            {
+                if ((this.mUIDeleteButton == null))
+                {
+                    this.mUIDeleteButton = new HtmlInputButton(this);
+                    #region Search Criteria
+                    this.mUIDeleteButton.SearchProperties[HtmlButton.PropertyNames.Id] = "deleteRideBtn55d1b7ed49cf3ac835c51f1b";
+                    this.mUIDeleteButton.SearchProperties[HtmlButton.PropertyNames.Name] = null;
+                    this.mUIDeleteButton.SearchProperties[HtmlButton.PropertyNames.DisplayText] = "Delete";
+                    this.mUIDeleteButton.SearchProperties[HtmlButton.PropertyNames.Type] = "button";
+                    this.mUIDeleteButton.FilterProperties[HtmlButton.PropertyNames.Title] = null;
+                    this.mUIDeleteButton.FilterProperties[HtmlButton.PropertyNames.Class] = "btn control a delete";
+                    this.mUIDeleteButton.FilterProperties[HtmlButton.PropertyNames.ControlDefinition] = "class=\"btn control a delete\" id=\"deleteR";
+                    this.mUIDeleteButton.FilterProperties[HtmlButton.PropertyNames.TagInstance] = "11";
+                    this.mUIDeleteButton.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIDeleteButton;
+            }
+        }
+        
+        public HtmlInputButton UIYesButton1
+        {
+            get
+            {
+                if ((this.mUIYesButton1 == null))
+                {
+                    this.mUIYesButton1 = new HtmlInputButton(this);
+                    #region Search Criteria
+                    this.mUIYesButton1.SearchProperties[HtmlButton.PropertyNames.Id] = "dialogYes";
+                    this.mUIYesButton1.SearchProperties[HtmlButton.PropertyNames.Name] = null;
+                    this.mUIYesButton1.SearchProperties[HtmlButton.PropertyNames.DisplayText] = "Yes";
+                    this.mUIYesButton1.SearchProperties[HtmlButton.PropertyNames.Type] = "button";
+                    this.mUIYesButton1.FilterProperties[HtmlButton.PropertyNames.Title] = null;
+                    this.mUIYesButton1.FilterProperties[HtmlButton.PropertyNames.Class] = "btn control a";
+                    this.mUIYesButton1.FilterProperties[HtmlButton.PropertyNames.ControlDefinition] = "class=\"btn control a\" id=\"dialogYes\" sty";
+                    this.mUIYesButton1.FilterProperties[HtmlButton.PropertyNames.TagInstance] = "70";
+                    this.mUIYesButton1.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIYesButton1;
+            }
+        }
+        
+        public UIRidesPane UIRidesPane
+        {
+            get
+            {
+                if ((this.mUIRidesPane == null))
+                {
+                    this.mUIRidesPane = new UIRidesPane(this);
+                }
+                return this.mUIRidesPane;
+            }
+        }
+        
+        public UIRidesPane1 UIRidesPane1
+        {
+            get
+            {
+                if ((this.mUIRidesPane1 == null))
+                {
+                    this.mUIRidesPane1 = new UIRidesPane1(this);
+                }
+                return this.mUIRidesPane1;
+            }
+        }
         #endregion
         
         #region Fields
@@ -3413,6 +3509,14 @@ namespace WebSiteGUITests
         private HtmlEdit mUIPublishInputEdit2;
         
         private HtmlInputButton mUIPublishButton;
+        
+        private HtmlInputButton mUIDeleteButton;
+        
+        private HtmlInputButton mUIYesButton1;
+        
+        private UIRidesPane mUIRidesPane;
+        
+        private UIRidesPane1 mUIRidesPane1;
         #endregion
     }
     
@@ -3848,6 +3952,102 @@ namespace WebSiteGUITests
         
         #region Fields
         private HtmlSpan mUIDestinationPane;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "12.0.31101.0")]
+    public class UIRidesPane : HtmlDiv
+    {
+        
+        public UIRidesPane(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[HtmlDiv.PropertyNames.Id] = "rides";
+            this.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
+            this.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Request\r\nFrom: Beersheba, IsraelTo: Haif";
+            this.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
+            this.FilterProperties[HtmlDiv.PropertyNames.Class] = "jspScrollable";
+            this.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "tabindex=\"0\" class=\"jspScrollable\" id=\"rides\" style=\"padding: 0px; width: 836px; " +
+                "overflow: hidden;\" hidefocus=\"false\"";
+            this.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "51";
+            this.WindowTitles.Add("RideShare");
+            #endregion
+        }
+        
+        #region Properties
+        public HtmlDiv UIRequestFromBeershebaPane
+        {
+            get
+            {
+                if ((this.mUIRequestFromBeershebaPane == null))
+                {
+                    this.mUIRequestFromBeershebaPane = new HtmlDiv(this);
+                    #region Search Criteria
+                    this.mUIRequestFromBeershebaPane.SearchProperties[HtmlDiv.PropertyNames.Id] = null;
+                    this.mUIRequestFromBeershebaPane.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
+                    this.mUIRequestFromBeershebaPane.FilterProperties[HtmlDiv.PropertyNames.InnerText] = "Request\r\nFrom: Beersheba, IsraelTo: Haif";
+                    this.mUIRequestFromBeershebaPane.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
+                    this.mUIRequestFromBeershebaPane.FilterProperties[HtmlDiv.PropertyNames.Class] = "jspPane";
+                    this.mUIRequestFromBeershebaPane.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "class=\"jspPane\" style=\"padding: 0px; left: 0px; top: 0px; width: 826px;\"";
+                    this.mUIRequestFromBeershebaPane.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "53";
+                    this.mUIRequestFromBeershebaPane.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mUIRequestFromBeershebaPane;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private HtmlDiv mUIRequestFromBeershebaPane;
+        #endregion
+    }
+    
+    [GeneratedCode("Coded UITest Builder", "12.0.31101.0")]
+    public class UIRidesPane1 : HtmlDiv
+    {
+        
+        public UIRidesPane1(UITestControl searchLimitContainer) : 
+                base(searchLimitContainer)
+        {
+            #region Search Criteria
+            this.SearchProperties[HtmlDiv.PropertyNames.Id] = "rides";
+            this.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
+            this.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
+            this.FilterProperties[HtmlDiv.PropertyNames.Class] = "jspScrollable";
+            this.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "tabindex=\"0\" class=\"jspScrollable\" id=\"rides\" style=\"padding: 0px; width: 836px; " +
+                "overflow: hidden;\" hidefocus=\"false\"";
+            this.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "36";
+            this.WindowTitles.Add("RideShare");
+            #endregion
+        }
+        
+        #region Properties
+        public HtmlDiv MyRidesPanel
+        {
+            get
+            {
+                if ((this.mMyRidesPanel == null))
+                {
+                    this.mMyRidesPanel = new HtmlDiv(this);
+                    #region Search Criteria
+                    this.mMyRidesPanel.SearchProperties[HtmlDiv.PropertyNames.Id] = null;
+                    this.mMyRidesPanel.SearchProperties[HtmlDiv.PropertyNames.Name] = null;
+                    this.mMyRidesPanel.FilterProperties[HtmlDiv.PropertyNames.Title] = null;
+                    this.mMyRidesPanel.FilterProperties[HtmlDiv.PropertyNames.Class] = "jspPane";
+                    this.mMyRidesPanel.FilterProperties[HtmlDiv.PropertyNames.ControlDefinition] = "class=\"jspPane\" style=\"padding: 0px; left: 0px; top: 0px; width: 826px;\"";
+                    this.mMyRidesPanel.FilterProperties[HtmlDiv.PropertyNames.TagInstance] = "38";
+                    this.mMyRidesPanel.WindowTitles.Add("RideShare");
+                    #endregion
+                }
+                return this.mMyRidesPanel;
+            }
+        }
+        #endregion
+        
+        #region Fields
+        private HtmlDiv mMyRidesPanel;
         #endregion
     }
     

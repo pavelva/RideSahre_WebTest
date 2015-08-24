@@ -504,5 +504,5 @@
         /// </summary>
         public string UIPublishInputEdit2Text = "40";
         #endregion
-}
+    }
 }

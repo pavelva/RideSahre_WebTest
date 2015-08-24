@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assertions\PageAssertions.cs" />
+    <Compile Include="MyRidesTets.cs" />
     <Compile Include="PublishRideTests.cs" />
     <Compile Include="PostRequestTests.cs" />
     <Compile Include="RideShareWebSiteTests.cs" />

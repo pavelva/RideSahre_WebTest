@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -123,6 +125,13 @@ namespace WebSiteGUITests.RideShare
                 default:
                     throw new Exception("Bad Assertion Arguments");
             }
+        }
+
+        public void AssertRideNotExist(string id)
+        {
+            var ridesPanel = this.UIMap.UIRideShareWindowsInteWindow.UIRideShareDocument.UIRidesPane1.MyRidesPanel;
+            foreach(HtmlDiv ride in ridesPanel.GetChildren())
+                Assert.AreNotEqual(id, ride.Id);
         }
     }
 }

@@ -59,7 +59,7 @@ namespace WebSiteGUITests
 
             adapter.OpenRegisterPanel();
             adapter.Register(data.RegisterData);
-            assert.MessageAssertion(data.RegisterMissingEmailMessage);
+            assert.MessageAssertion(data.RegisterBadNameMessage);
         }
 
         [TestMethod]
@@ -72,7 +72,7 @@ namespace WebSiteGUITests
 
             reg.email = data.TestEmail;
             adapter.Register(data.RegisterData);
-            assert.MessageAssertion(data.RegisterMissingPhoneMessage);
+            assert.MessageAssertion(data.RegisterBadNameMessage);
         }
 
         [TestMethod]
@@ -87,7 +87,7 @@ namespace WebSiteGUITests
             reg.phone = data.TestPhone;
 
             adapter.Register(data.RegisterData);
-            assert.MessageAssertion(data.RegisterMissingPasswordMessage);
+            assert.MessageAssertion(data.RegisterBadNameMessage);
 
         }
 
@@ -141,7 +141,123 @@ namespace WebSiteGUITests
             reg.password = data.TestPassword;
             reg.verifiedPassword = reg.password;
             adapter.Register(data.RegisterData);
-            assert.MessageAssertion(data.RegisterNotBGUMail);
+            assert.MessageAssertion(data.RegisterBadEmailMessage);
+        }
+
+        [TestMethod]
+        public void TestRegisterNumericName()
+        {
+            Register reg = data.RegisterData;
+            reg.clear();
+
+            adapter.OpenRegisterPanel();
+
+            reg.firstName = data.TestName + '1';
+            reg.lastName = data.TestLastName;
+            reg.email = data.TestEmail;
+            reg.phone = data.TestPhone;
+            reg.password = data.TestPassword;
+            reg.verifiedPassword = data.TestPassword;
+
+            adapter.Register(data.RegisterData);
+            assert.MessageAssertion(data.RegisterBadNameMessage);
+
+        }
+
+        [TestMethod]
+        public void TestRegisterNoFirstName()
+        {
+            Register reg = data.RegisterData;
+            reg.clear();
+
+            adapter.OpenRegisterPanel();
+
+            reg.firstName = "";
+            reg.lastName = data.TestLastName;
+            reg.email = data.TestEmail;
+            reg.phone = data.TestPhone;
+            reg.password = data.TestPassword;
+            reg.verifiedPassword = data.TestPassword;
+
+            adapter.Register(data.RegisterData);
+            assert.MessageAssertion(data.RegisterBadNameMessage);
+
+        }
+
+        [TestMethod]
+        public void TestRegisterNoLastName()
+        {
+            Register reg = data.RegisterData;
+            reg.clear();
+
+            adapter.OpenRegisterPanel();
+
+            reg.firstName = data.TestName;
+            reg.lastName = "";
+            reg.email = data.TestEmail;
+            reg.phone = data.TestPhone;
+            reg.password = data.TestPassword;
+            reg.verifiedPassword = data.TestPassword;
+
+            adapter.Register(data.RegisterData);
+            assert.MessageAssertion(data.RegisterBadNameMessage);
+        }
+
+        [TestMethod]
+        public void TestRegisterBadEmailFormat()
+        {
+            Register reg = data.RegisterData;
+            reg.clear();
+
+            adapter.OpenRegisterPanel();
+
+            reg.firstName = data.TestName;
+            reg.lastName = data.TestLastName;
+            reg.email = "user.bgu.ac.il";
+            reg.phone = data.TestPhone;
+            reg.password = data.TestPassword;
+            reg.verifiedPassword = data.TestPassword;
+
+            adapter.Register(data.RegisterData);
+            assert.MessageAssertion(data.RegisterBadEmailMessage);
+        }
+
+        [TestMethod]
+        public void TestRegisterBadPhoneFormat()
+        {
+            Register reg = data.RegisterData;
+            reg.clear();
+
+            adapter.OpenRegisterPanel();
+
+            reg.firstName = data.TestName;
+            reg.lastName = data.TestLastName;
+            reg.email = data.TestEmail;
+            reg.phone = "12-43-2346756";
+            reg.password = data.TestPassword;
+            reg.verifiedPassword = data.TestPassword;
+
+            adapter.Register(data.RegisterData);
+            assert.MessageAssertion(data.RegisterBadPhoneMessage);
+        }
+
+        [TestMethod]
+        public void TestRegisterPhoneWithChar()
+        {
+            Register reg = data.RegisterData;
+            reg.clear();
+
+            adapter.OpenRegisterPanel();
+
+            reg.firstName = data.TestName;
+            reg.lastName = data.TestLastName;
+            reg.email = data.TestEmail;
+            reg.phone = "054-55548a4";
+            reg.password = data.TestPassword;
+            reg.verifiedPassword = data.TestPassword;
+
+            adapter.Register(data.RegisterData);
+            assert.MessageAssertion(data.RegisterBadPhoneMessage);
         }
 
         [TestMethod]
@@ -164,59 +280,6 @@ namespace WebSiteGUITests
             assert.AssertCorrectLogin(reg.email);
 
         }
-        #region Additional test attributes
-
-        // You can use the following additional attributes as you write your tests:
-
-        ////Use TestInitialize to run code before running each test 
-        //[TestInitialize()]
-        //public void MyTestInitialize()
-        //{
-        //    // To generate code for this test, select "Generate Code for Coded UI Test" from the shortcut menu and select one of the menu items.
-            
-        //}
-
-        //Use TestCleanup to run code after each test has run
-        //[TestCleanup()]
-        //public void MyTestCleanup()
-        //{
-
-            
-        //}
-
-        #endregion
-
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        //public TestContext TestContext
-        //{
-        //    get
-        //    {
-        //        return testContextInstance;
-        //    }
-        //    set
-        //    {
-        //        testContextInstance = value;
-        //    }
-        //}
-        //private TestContext testContextInstance;
-
-        //public UIMap UIMap
-        //{
-        //    get
-        //    {
-        //        if ((this.map == null))
-        //        {
-        //            this.map = new UIMap();
-        //        }
-
-        //        return this.map;
-        //    }
-        //}
-
-        //private UIMap map;
 
         protected override void TestInitialize()
         {

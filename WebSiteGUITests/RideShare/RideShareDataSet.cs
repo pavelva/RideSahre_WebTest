@@ -29,17 +29,19 @@ namespace WebSiteGUITests.RideShare
         #region messages
 
         public string BadLoginMessage;
-        public string RegisterMissingEmailMessage;
-        public string RegisterMissingPhoneMessage;
-        public string RegisterMissingPasswordMessage;
+        public string RegisterBadNameMessage;
+        public string RegisterBadEmailMessage;
+        public string RegisterBadPhoneMessage;
+        public string RegisterBadPasswordMessage;
         public string RegisterPasswordAndVerifiedPasswordDontMatch;
-        public string RegisterNotBGUMail;
         public string BadSource;
         public string BadDestination;
         public string BadTimeInterval;
         public string BadPassengersAmount;
         public string BadDate;
         public string BadPrice;
+        public string deleteRequest;
+        public string deleteRide;
 
         #endregion
 
@@ -52,11 +54,11 @@ namespace WebSiteGUITests.RideShare
         private void initMessages()
         {
             this.BadLoginMessage = "Wrong email or password!";
-            this.RegisterMissingEmailMessage = "Missing Fields - Key: email";
-            this.RegisterMissingPhoneMessage = "Missing Fields - Key: phone";
-            this.RegisterMissingPasswordMessage = "Missing Fields - Key: password";
+            this.RegisterBadNameMessage = "Please Enter Legal Name";
+            this.RegisterBadEmailMessage = "Please Enter Legal Email";
+            this.RegisterBadPhoneMessage = "Please Enter Legal Phone";
+            this.RegisterBadPasswordMessage = "Please Enter Legal Password";
             this.RegisterPasswordAndVerifiedPasswordDontMatch = "Password and verified password not match";
-            this.RegisterNotBGUMail = "Registration Must be Done with BGU Mail";
 
             this.BadSource = "Please Enter Source";
             this.BadDestination = "Please Enter Destination";
@@ -64,6 +66,9 @@ namespace WebSiteGUITests.RideShare
             this.BadPassengersAmount = "Please Enter Legal Passengers Amount";
             this.BadDate = "Please Enter Legal Date";
             this.BadTimeInterval = "Please Enter Legal Exit Time Interval";
+
+            this.deleteRequest = "Are You Sure You Want To Delete The Request?";
+            this.deleteRide = "Are You Sure You Want To Delete The Ride?";
         }
 
         private void initInput()
@@ -75,10 +80,10 @@ namespace WebSiteGUITests.RideShare
             this.CorrectPassword = "q1";
 
             string now = DateTime.Now.ToShortDateString();
-            this.TestName = "User_" + now;
+            this.TestName = "WebTestUser";
             this.TestLastName = "Jonson";
             this.TestPhone = "04-8766666";
-            this.TestEmail = "user_" + now + "@post.bgu.ac.il";
+            this.TestEmail = "web.test.user" + now.Replace('/','.') + "@post.bgu.ac.il";
             this.TestPassword = "q1w2e3r4";
 
             this.RegisterData = new Register();

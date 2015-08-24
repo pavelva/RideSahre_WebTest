@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using WebSiteGUITests.RideShare.Data;
 using System.Threading;
+using Microsoft.VisualStudio.TestTools.UITesting.HtmlControls;
 
 namespace WebSiteGUITests.RideShare
 {
@@ -184,6 +185,23 @@ namespace WebSiteGUITests.RideShare
             this.UIMap.PublishRideParams.UIPublishInputEdit2Text = ride.price;
 
             this.UIMap.PublishRide(ride.smoking);
+        }
+
+        public void Delete()
+        {
+            this.UIMap.DeleteBtn();
+        }
+
+        public void Approve()
+        {
+            this.UIMap.Approve();
+        }
+
+        public string GetFirstRideId()
+        {
+            var ridesPanel = this.UIMap.UIRideShareWindowsInteWindow.UIRideShareDocument.UIRidesPane1.MyRidesPanel;
+            var firstRide  = ridesPanel.GetChildren()[0];
+            return ((HtmlDiv)(firstRide)).Id;
         }
     }
 }
