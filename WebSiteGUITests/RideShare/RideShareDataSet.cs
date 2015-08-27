@@ -17,7 +17,11 @@ namespace WebSiteGUITests.RideShare
         public string CorrectEmail;
         public string CorrectPassword;
 
-        public string TestEmail;
+        public string TestEmailBGU;
+        public string TestEmailPost;
+        public string TestEmailSE;
+        public string TestEmailISE;
+        public string TestEmailCS;
         public string TestPassword;
         public string TestName;
         public string TestLastName;
@@ -36,6 +40,7 @@ namespace WebSiteGUITests.RideShare
         public string RegisterPasswordAndVerifiedPasswordDontMatch;
         public string BadSource;
         public string BadDestination;
+        public string BadAddress;
         public string BadTimeInterval;
         public string BadPassengersAmount;
         public string BadDate;
@@ -54,6 +59,7 @@ namespace WebSiteGUITests.RideShare
         private void initMessages()
         {
             this.BadLoginMessage = "Wrong email or password!";
+
             this.RegisterBadNameMessage = "Please Enter Legal Name";
             this.RegisterBadEmailMessage = "Please Enter Legal Email";
             this.RegisterBadPhoneMessage = "Please Enter Legal Phone";
@@ -62,6 +68,7 @@ namespace WebSiteGUITests.RideShare
 
             this.BadSource = "Please Enter Source";
             this.BadDestination = "Please Enter Destination";
+            this.BadAddress = "Please Enter Legal Address";
             this.BadPrice = "Please Enter Legal Price";
             this.BadPassengersAmount = "Please Enter Legal Passengers Amount";
             this.BadDate = "Please Enter Legal Date";
@@ -83,7 +90,11 @@ namespace WebSiteGUITests.RideShare
             this.TestName = "WebTestUser";
             this.TestLastName = "Jonson";
             this.TestPhone = "04-8766666";
-            this.TestEmail = "web.test.user" + now.Replace('/','.') + "@post.bgu.ac.il";
+            this.TestEmailBGU = "web.test.user" + now.Replace('/','.') + "." + DateTime.Now.Ticks + "@bgu.ac.il";
+            this.TestEmailPost = "web.test.user" + now.Replace('/', '.') + DateTime.Now.Ticks + "@post.bgu.ac.il";
+            this.TestEmailSE = "web.test.user" + now.Replace('/', '.') + DateTime.Now.Ticks + "@se.bgu.ac.il";
+            this.TestEmailISE = "web.test.user" + now.Replace('/', '.') + DateTime.Now.Ticks + "@ise.bgu.ac.il";
+            this.TestEmailCS = "web.test.user" + now.Replace('/', '.') + DateTime.Now.Ticks + "@cs.bgu.ac.il";
             this.TestPassword = "q1w2e3r4";
 
             this.RegisterData = new Register();

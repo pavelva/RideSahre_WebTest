@@ -28,6 +28,8 @@ namespace WebSiteGUITests
 
         #region Tests - No Stops
 
+        #region missing fields
+
         [TestMethod]
         public void PublishRideEmptyFields()
         {
@@ -133,8 +135,248 @@ namespace WebSiteGUITests
             assert.MessageAssertion(data.BadPassengersAmount);
         }
 
+        #endregion
+
+        #region invalid input
+
         [TestMethod]
-        public void PublishRideAllCorrectNoStops()
+        public void PublishRide_NoStops_InvalidInput_DateWithChar()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            ride.Clear();
+            ride.source = "tel aviv";
+            ride.destination = "kiryat shmona";
+            ride.setDate("a", month.ToString(), year.ToString());
+            ride.fromTime = "14:00";
+            ride.toTime = "15:00";
+            ride.price = "100";
+            ride.maxPassengers = "4";
+            ride.smoking = Smoking.yes;
+
+            adapter.PublishRide(ride);
+
+            assert.MessageAssertion(this.data.BadDate);
+        }
+
+        [TestMethod]
+        public void PublishRide_NoStops_InvalidInput_DateWithNegative()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            ride.Clear();
+            ride.source = "tel aviv";
+            ride.destination = "kiryat shmona";
+            ride.setDate("-1", month.ToString(), year.ToString());
+            ride.fromTime = "14:00";
+            ride.toTime = "15:00";
+            ride.price = "100";
+            ride.maxPassengers = "4";
+            ride.smoking = Smoking.yes;
+
+            adapter.PublishRide(ride);
+
+            assert.MessageAssertion(this.data.BadDate);
+        }
+
+        [TestMethod]
+        public void PublishRide_NoStops_InvalidInput_TimeWithChar()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            ride.Clear();
+            ride.source = "tel aviv";
+            ride.destination = "kiryat shmona";
+            ride.setDate(day, month, year);
+            ride.fromTime = "1a:00";
+            ride.toTime = "15:00";
+            ride.price = "100";
+            ride.maxPassengers = "4";
+            ride.smoking = Smoking.yes;
+
+            adapter.PublishRide(ride);
+
+            assert.MessageAssertion(this.data.BadTimeInterval);
+        }
+
+        [TestMethod]
+        public void PublishRide_NoStops_InvalidInput_TimeWithNegative()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            ride.Clear();
+            ride.source = "tel aviv";
+            ride.destination = "kiryat shmona";
+            ride.setDate(day, month, year);
+            ride.fromTime = "-14:00";
+            ride.toTime = "15:00";
+            ride.price = "100";
+            ride.maxPassengers = "4";
+            ride.smoking = Smoking.yes;
+
+            adapter.PublishRide(ride);
+
+            assert.MessageAssertion(this.data.BadTimeInterval);
+        }
+
+        [TestMethod]
+        public void PublishRide_NoStops_InvalidInput_PassengerWithChar()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            ride.Clear();
+            ride.source = "tel aviv";
+            ride.destination = "kiryat shmona";
+            ride.setDate(day, month, year);
+            ride.fromTime = "14:00";
+            ride.toTime = "15:00";
+            ride.price = "100";
+            ride.maxPassengers = "4a";
+            ride.smoking = Smoking.yes;
+
+            adapter.PublishRide(ride);
+
+            assert.MessageAssertion(this.data.BadPassengersAmount);
+        }
+
+        [TestMethod]
+        public void PublishRide_NoStops_InvalidInput_PassengerWithNegative()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            ride.Clear();
+            ride.source = "tel aviv";
+            ride.destination = "kiryat shmona";
+            ride.setDate(day, month, year);
+            ride.fromTime = "14:00";
+            ride.toTime = "15:00";
+            ride.price = "100";
+            ride.maxPassengers = "-4";
+            ride.smoking = Smoking.yes;
+
+            adapter.PublishRide(ride);
+
+            assert.MessageAssertion(this.data.BadPassengersAmount);
+        }
+
+        [TestMethod]
+        public void PublishRide_NoStops_InvalidInput_PriceWithChar()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            ride.Clear();
+            ride.source = "tel aviv";
+            ride.destination = "kiryat shmona";
+            ride.setDate(day, month, year);
+            ride.fromTime = "14:00";
+            ride.toTime = "15:00";
+            ride.price = "10a0";
+            ride.maxPassengers = "4";
+            ride.smoking = Smoking.yes;
+
+            adapter.PublishRide(ride);
+
+            assert.MessageAssertion(this.data.BadPrice);
+        }
+
+        [TestMethod]
+        public void PublishRide_NoStops_InvalidInput_PriceWithNegative()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            ride.Clear();
+            ride.source = "tel aviv";
+            ride.destination = "kiryat shmona";
+            ride.setDate(day, month, year);
+            ride.fromTime = "14:00";
+            ride.toTime = "15:00";
+            ride.price = "-100";
+            ride.maxPassengers = "4";
+            ride.smoking = Smoking.yes;
+
+            adapter.PublishRide(ride);
+
+            assert.MessageAssertion(this.data.BadPrice);
+        }
+
+        #endregion
+
+        #region bad data
+
+        [TestMethod]
+        public void PublishRidePastDate()
+        {
+            DateTime now = DateTime.Now.AddYears(-1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            ride.Clear();
+            ride.source = "tel aviv";
+            ride.destination = "kiryat shmona";
+            ride.setDate(day, month, year);
+            ride.fromTime = "14:00";
+            ride.toTime = "15:00";
+            ride.price = "100";
+            ride.maxPassengers = "4";
+
+            adapter.PublishRide(ride);
+
+            assert.MessageAssertion(this.data.BadDate);
+        }
+
+        [TestMethod]
+        public void PublishRideBadTimeInterval()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            ride.Clear();
+            ride.source = "tel aviv";
+            ride.destination = "kiryat shmona";
+            ride.setDate(day, month, year);
+            ride.fromTime = "14:00";
+            ride.toTime = "13:00";
+            ride.price = "100";
+            ride.maxPassengers = "4";
+
+            adapter.PublishRide(ride);
+
+            assert.MessageAssertion(this.data.BadTimeInterval);
+        }
+
+        #endregion
+        
+        #region correct input
+
+        [TestMethod]
+        public void PublishRideAllCorrectNoStopsSmoking()
         {
             DateTime now = DateTime.Now.AddYears(1);
             var year = now.Year;
@@ -149,14 +391,62 @@ namespace WebSiteGUITests
             ride.toTime = "15:00";
             ride.price = "100";
             ride.maxPassengers = "4";
+            ride.smoking = Smoking.yes;
             adapter.PublishRide(ride);
 
             assert.AssertMyRidesPage();
         }
 
+        [TestMethod]
+        public void PublishRideAllCorrectNoStopsNotSmoking()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            ride.Clear();
+            ride.source = "tel aviv";
+            ride.destination = "kiryat shmona";
+            ride.setDate(day, month, year);
+            ride.fromTime = "14:00";
+            ride.toTime = "15:00";
+            ride.price = "100";
+            ride.maxPassengers = "4";
+            ride.smoking = Smoking.no;
+            adapter.PublishRide(ride);
+
+            assert.AssertMyRidesPage();
+        }
+
+        [TestMethod]
+        public void PublishRideAllCorrectDontCareStopsSmoking()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            ride.Clear();
+            ride.source = "tel aviv";
+            ride.destination = "kiryat shmona";
+            ride.setDate(day, month, year);
+            ride.fromTime = "14:00";
+            ride.toTime = "15:00";
+            ride.price = "100";
+            ride.maxPassengers = "4";
+            ride.smoking = Smoking.dontCare;
+            adapter.PublishRide(ride);
+
+            assert.AssertMyRidesPage();
+        }
+
+        #endregion 
+
         #endregion
 
         #region Tests - Only Stops
+
         [TestMethod]
         public void PublishRideAddStops()
         {
@@ -226,12 +516,7 @@ namespace WebSiteGUITests
 
         #region Tests - With Stops
 
-        private void addStops()
-        {
-            adapter.AddStop("haifa");
-            adapter.AddStop("ako");
-        }
-
+        #region empty fields
         [TestMethod]
         public void PublishRide_WithStops_EmptyFields()
         {
@@ -357,8 +642,256 @@ namespace WebSiteGUITests
             assert.MessageAssertion(data.BadPassengersAmount);
         }
 
+        #endregion
+
+        #region invalid input
+
         [TestMethod]
-        public void PublishRide_WithStops_AllCorrect()
+        public void PublishRide_WithStops_InvalidInput_DateWithChar()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            ride.Clear();
+            ride.source = "tel aviv";
+            ride.destination = "kiryat shmona";
+            ride.setDate("a", month.ToString(), year.ToString());
+            ride.fromTime = "14:00";
+            ride.toTime = "15:00";
+            ride.price = "100";
+            ride.maxPassengers = "4";
+            ride.smoking = Smoking.yes;
+            addStops();
+
+            adapter.PublishRide(ride);
+
+            assert.MessageAssertion(this.data.BadDate);
+        }
+
+        [TestMethod]
+        public void PublishRide_WithStops_InvalidInput_DateWithNegative()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            ride.Clear();
+            ride.source = "tel aviv";
+            ride.destination = "kiryat shmona";
+            ride.setDate("-1", month.ToString(), year.ToString());
+            ride.fromTime = "14:00";
+            ride.toTime = "15:00";
+            ride.price = "100";
+            ride.maxPassengers = "4";
+            ride.smoking = Smoking.yes;
+            addStops();
+
+            adapter.PublishRide(ride);
+
+            assert.MessageAssertion(this.data.BadDate);
+        }
+
+        [TestMethod]
+        public void PublishRide_WithStops_InvalidInput_TimeWithChar()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            ride.Clear();
+            ride.source = "tel aviv";
+            ride.destination = "kiryat shmona";
+            ride.setDate(day, month, year);
+            ride.fromTime = "1a:00";
+            ride.toTime = "15:00";
+            ride.price = "100";
+            ride.maxPassengers = "4";
+            ride.smoking = Smoking.yes;
+            addStops();
+
+            adapter.PublishRide(ride);
+
+            assert.MessageAssertion(this.data.BadTimeInterval);
+        }
+
+        [TestMethod]
+        public void PublishRide_WithStops_InvalidInput_TimeWithNegative()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            ride.Clear();
+            ride.source = "tel aviv";
+            ride.destination = "kiryat shmona";
+            ride.setDate(day, month, year);
+            ride.fromTime = "-14:00";
+            ride.toTime = "15:00";
+            ride.price = "100";
+            ride.maxPassengers = "4";
+            ride.smoking = Smoking.yes;
+            addStops();
+
+            adapter.PublishRide(ride);
+
+            assert.MessageAssertion(this.data.BadTimeInterval);
+        }
+
+        [TestMethod]
+        public void PublishRide_WithStops_InvalidInput_PassengerWithChar()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            ride.Clear();
+            ride.source = "tel aviv";
+            ride.destination = "kiryat shmona";
+            ride.setDate(day, month, year);
+            ride.fromTime = "14:00";
+            ride.toTime = "15:00";
+            ride.price = "100";
+            ride.maxPassengers = "4a";
+            ride.smoking = Smoking.yes;
+            addStops();
+
+            adapter.PublishRide(ride);
+
+            assert.MessageAssertion(this.data.BadPassengersAmount);
+        }
+
+        [TestMethod]
+        public void PublishRide_WithStops_InvalidInput_PassengerWithNegative()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            ride.Clear();
+            ride.source = "tel aviv";
+            ride.destination = "kiryat shmona";
+            ride.setDate(day, month, year);
+            ride.fromTime = "14:00";
+            ride.toTime = "15:00";
+            ride.price = "100";
+            ride.maxPassengers = "-4";
+            ride.smoking = Smoking.yes;
+            addStops();
+
+            adapter.PublishRide(ride);
+
+            assert.MessageAssertion(this.data.BadPassengersAmount);
+        }
+
+        [TestMethod]
+        public void PublishRide_WithStops_InvalidInput_PriceWithChar()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            ride.Clear();
+            ride.source = "tel aviv";
+            ride.destination = "kiryat shmona";
+            ride.setDate(day, month, year);
+            ride.fromTime = "14:00";
+            ride.toTime = "15:00";
+            ride.price = "10a0";
+            ride.maxPassengers = "4";
+            ride.smoking = Smoking.yes;
+            addStops();
+
+            adapter.PublishRide(ride);
+
+            assert.MessageAssertion(this.data.BadPrice);
+        }
+
+        [TestMethod]
+        public void PublishRide_WithStops_InvalidInput_PriceWithNegative()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            ride.Clear();
+            ride.source = "tel aviv";
+            ride.destination = "kiryat shmona";
+            ride.setDate(day, month, year);
+            ride.fromTime = "14:00";
+            ride.toTime = "15:00";
+            ride.price = "-100";
+            ride.maxPassengers = "4";
+            ride.smoking = Smoking.yes;
+            addStops();
+
+            adapter.PublishRide(ride);
+
+            assert.MessageAssertion(this.data.BadPrice);
+        }
+
+        #endregion
+
+        #region bad data
+
+        [TestMethod]
+        public void PublishRide_WithStops_PastDate()
+        {
+            DateTime now = DateTime.Now.AddYears(-1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            ride.Clear();
+            ride.source = "tel aviv";
+            ride.destination = "kiryat shmona";
+            ride.setDate(day, month, year);
+            ride.fromTime = "14:00";
+            ride.toTime = "15:00";
+            ride.price = "100";
+            ride.maxPassengers = "4";
+
+            adapter.PublishRide(ride);
+
+            assert.MessageAssertion(this.data.BadDate);
+        }
+
+        [TestMethod]
+        public void PublishRide_WithStops_BadTimeInterval()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            ride.Clear();
+            ride.source = "tel aviv";
+            ride.destination = "kiryat shmona";
+            ride.setDate(day, month, year);
+            ride.fromTime = "14:00";
+            ride.toTime = "13:00";
+            ride.price = "100";
+            ride.maxPassengers = "4";
+
+            adapter.PublishRide(ride);
+
+            assert.MessageAssertion(this.data.BadTimeInterval);
+        }
+
+        #endregion
+
+        #region correct input
+
+        [TestMethod]
+        public void PublishRide_WithStops_AllCorrectSmoking()
         {
             DateTime now = DateTime.Now.AddYears(1);
             var year = now.Year;
@@ -373,7 +906,7 @@ namespace WebSiteGUITests
             ride.toTime = "15:00";
             ride.price = "100";
             ride.maxPassengers = "4";
-
+            ride.smoking = Smoking.yes;
             addStops();
 
             adapter.PublishRide(ride);
@@ -381,7 +914,62 @@ namespace WebSiteGUITests
             assert.AssertMyRidesPage();
         }
 
+        [TestMethod]
+        public void PublishRide_WithStops_AllCorrectNotSmoking()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            ride.Clear();
+            ride.source = "tel aviv";
+            ride.destination = "kiryat shmona";
+            ride.setDate(day, month, year);
+            ride.fromTime = "14:00";
+            ride.toTime = "15:00";
+            ride.price = "100";
+            ride.maxPassengers = "4";
+            ride.smoking = Smoking.no;
+            addStops();
+
+            adapter.PublishRide(ride);
+
+            assert.AssertMyRidesPage();
+        }
+
+        [TestMethod]
+        public void PublishRide_WithStops_AllCorrectDontCareSmoking()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            ride.Clear();
+            ride.source = "tel aviv";
+            ride.destination = "kiryat shmona";
+            ride.setDate(day, month, year);
+            ride.fromTime = "14:00";
+            ride.toTime = "15:00";
+            ride.price = "100";
+            ride.maxPassengers = "4";
+            ride.smoking = Smoking.dontCare;
+            addStops();
+
+            adapter.PublishRide(ride);
+
+            assert.AssertMyRidesPage();
+        }
         #endregion
+
+        #endregion
+
+        private void addStops()
+        {
+            adapter.AddStop("haifa");
+            adapter.AddStop("ako");
+        }
 
         protected override void TestInitialize()
         {

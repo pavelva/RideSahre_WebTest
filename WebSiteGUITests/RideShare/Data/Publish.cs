@@ -58,6 +58,11 @@ namespace WebSiteGUITests.RideShare.Data
             this._date = year + "-" + (month < 10 ? "0" : "") + month + "-" + (day < 10 ? "0" : "") + day;
         }
 
+        public void setDate(string day, string month, string year)
+        {
+            this._date = year + "-" + month + "-" + day;
+        }
+
         public virtual void Clear()
         {
             init();

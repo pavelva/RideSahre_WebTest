@@ -34,7 +34,7 @@ namespace WebSiteGUITests
             adapter.ClosePopup();
         }
 
-
+        
         [TestMethod]
         public void TestCorrectLogin()
         {
@@ -50,6 +50,10 @@ namespace WebSiteGUITests
             assert.AssertRegisterPanel();
 
         }
+
+        #region bad register
+
+        #region empty fields
 
         [TestMethod]
         public void TestRegisterEmptyFields_All()
@@ -70,7 +74,7 @@ namespace WebSiteGUITests
 
             adapter.OpenRegisterPanel();
 
-            reg.email = data.TestEmail;
+            reg.email = data.TestEmailBGU;
             adapter.Register(data.RegisterData);
             assert.MessageAssertion(data.RegisterBadNameMessage);
         }
@@ -83,7 +87,7 @@ namespace WebSiteGUITests
 
             adapter.OpenRegisterPanel();
 
-            reg.email = data.TestEmail;
+            reg.email = data.TestEmailBGU;
             reg.phone = data.TestPhone;
 
             adapter.Register(data.RegisterData);
@@ -100,13 +104,55 @@ namespace WebSiteGUITests
             adapter.OpenRegisterPanel();
 
 
-            reg.email = data.TestEmail;
+            reg.email = data.TestEmailBGU;
             reg.phone = data.TestPhone;
             reg.password = data.TestPassword;
             adapter.Register(data.RegisterData);
             assert.MessageAssertion(data.RegisterPasswordAndVerifiedPasswordDontMatch);
         }
 
+        [TestMethod]
+        public void TestRegisterNoFirstName()
+        {
+            Register reg = data.RegisterData;
+            reg.clear();
+
+            adapter.OpenRegisterPanel();
+
+            reg.firstName = "";
+            reg.lastName = data.TestLastName;
+            reg.email = data.TestEmailBGU;
+            reg.phone = data.TestPhone;
+            reg.password = data.TestPassword;
+            reg.verifiedPassword = data.TestPassword;
+
+            adapter.Register(data.RegisterData);
+            assert.MessageAssertion(data.RegisterBadNameMessage);
+
+        }
+
+        [TestMethod]
+        public void TestRegisterNoLastName()
+        {
+            Register reg = data.RegisterData;
+            reg.clear();
+
+            adapter.OpenRegisterPanel();
+
+            reg.firstName = data.TestName;
+            reg.lastName = "";
+            reg.email = data.TestEmailBGU;
+            reg.phone = data.TestPhone;
+            reg.password = data.TestPassword;
+            reg.verifiedPassword = data.TestPassword;
+
+            adapter.Register(data.RegisterData);
+            assert.MessageAssertion(data.RegisterBadNameMessage);
+        }
+
+        #endregion
+
+        #region invalid data
         [TestMethod]
         public void TestRegisterBadVerifiedPassword()
         {
@@ -116,7 +162,7 @@ namespace WebSiteGUITests
             adapter.OpenRegisterPanel();
 
 
-            reg.email = data.TestEmail;
+            reg.email = data.TestEmailBGU;
             reg.phone = data.TestPhone;
             reg.password = data.TestPassword;
             reg.verifiedPassword = reg.password + "11";
@@ -154,7 +200,7 @@ namespace WebSiteGUITests
 
             reg.firstName = data.TestName + '1';
             reg.lastName = data.TestLastName;
-            reg.email = data.TestEmail;
+            reg.email = data.TestEmailBGU;
             reg.phone = data.TestPhone;
             reg.password = data.TestPassword;
             reg.verifiedPassword = data.TestPassword;
@@ -162,45 +208,6 @@ namespace WebSiteGUITests
             adapter.Register(data.RegisterData);
             assert.MessageAssertion(data.RegisterBadNameMessage);
 
-        }
-
-        [TestMethod]
-        public void TestRegisterNoFirstName()
-        {
-            Register reg = data.RegisterData;
-            reg.clear();
-
-            adapter.OpenRegisterPanel();
-
-            reg.firstName = "";
-            reg.lastName = data.TestLastName;
-            reg.email = data.TestEmail;
-            reg.phone = data.TestPhone;
-            reg.password = data.TestPassword;
-            reg.verifiedPassword = data.TestPassword;
-
-            adapter.Register(data.RegisterData);
-            assert.MessageAssertion(data.RegisterBadNameMessage);
-
-        }
-
-        [TestMethod]
-        public void TestRegisterNoLastName()
-        {
-            Register reg = data.RegisterData;
-            reg.clear();
-
-            adapter.OpenRegisterPanel();
-
-            reg.firstName = data.TestName;
-            reg.lastName = "";
-            reg.email = data.TestEmail;
-            reg.phone = data.TestPhone;
-            reg.password = data.TestPassword;
-            reg.verifiedPassword = data.TestPassword;
-
-            adapter.Register(data.RegisterData);
-            assert.MessageAssertion(data.RegisterBadNameMessage);
         }
 
         [TestMethod]
@@ -232,7 +239,7 @@ namespace WebSiteGUITests
 
             reg.firstName = data.TestName;
             reg.lastName = data.TestLastName;
-            reg.email = data.TestEmail;
+            reg.email = data.TestEmailBGU;
             reg.phone = "12-43-2346756";
             reg.password = data.TestPassword;
             reg.verifiedPassword = data.TestPassword;
@@ -251,7 +258,7 @@ namespace WebSiteGUITests
 
             reg.firstName = data.TestName;
             reg.lastName = data.TestLastName;
-            reg.email = data.TestEmail;
+            reg.email = data.TestEmailBGU;
             reg.phone = "054-55548a4";
             reg.password = data.TestPassword;
             reg.verifiedPassword = data.TestPassword;
@@ -260,8 +267,11 @@ namespace WebSiteGUITests
             assert.MessageAssertion(data.RegisterBadPhoneMessage);
         }
 
+        #endregion
+
+        #region correct register
         [TestMethod]
-        public void TestRegisterCorrect()
+        public void TestRegisterCorrectBGUEmail()
         {
             Register reg = data.RegisterData;
             reg.clear();
@@ -270,7 +280,7 @@ namespace WebSiteGUITests
             
             reg.firstName = data.TestName;
             reg.lastName = data.TestLastName;
-            reg.email = data.TestEmail;
+            reg.email = data.TestEmailBGU;
             reg.phone = data.TestPhone;
             reg.password = data.TestPassword;
             reg.verifiedPassword = data.TestPassword;
@@ -278,8 +288,91 @@ namespace WebSiteGUITests
             adapter.Register(data.RegisterData);
             assert.AssertHomePage();
             assert.AssertCorrectLogin(reg.email);
-
         }
+
+        [TestMethod]
+        public void TestRegisterCorrectPOSTEmail()
+        {
+            Register reg = data.RegisterData;
+            reg.clear();
+
+            adapter.OpenRegisterPanel();
+
+            reg.firstName = data.TestName;
+            reg.lastName = data.TestLastName;
+            reg.email = data.TestEmailPost;
+            reg.phone = data.TestPhone;
+            reg.password = data.TestPassword;
+            reg.verifiedPassword = data.TestPassword;
+
+            adapter.Register(data.RegisterData);
+            assert.AssertHomePage();
+            assert.AssertCorrectLogin(reg.email);
+        }
+
+        [TestMethod]
+        public void TestRegisterCorrectSEEmail()
+        {
+            Register reg = data.RegisterData;
+            reg.clear();
+
+            adapter.OpenRegisterPanel();
+
+            reg.firstName = data.TestName;
+            reg.lastName = data.TestLastName;
+            reg.email = data.TestEmailISE;
+            reg.phone = data.TestPhone;
+            reg.password = data.TestPassword;
+            reg.verifiedPassword = data.TestPassword;
+
+            adapter.Register(data.RegisterData);
+            assert.AssertHomePage();
+            assert.AssertCorrectLogin(reg.email);
+        }
+
+        [TestMethod]
+        public void TestRegisterCorrectISEEmail()
+        {
+            Register reg = data.RegisterData;
+            reg.clear();
+
+            adapter.OpenRegisterPanel();
+
+            reg.firstName = data.TestName;
+            reg.lastName = data.TestLastName;
+            reg.email = data.TestEmailISE;
+            reg.phone = data.TestPhone;
+            reg.password = data.TestPassword;
+            reg.verifiedPassword = data.TestPassword;
+
+            adapter.Register(data.RegisterData);
+            assert.AssertHomePage();
+            assert.AssertCorrectLogin(reg.email);
+        }
+
+        [TestMethod]
+        public void TestRegisterCorrectCSEmail()
+        {
+            Register reg = data.RegisterData;
+            reg.clear();
+
+            adapter.OpenRegisterPanel();
+
+            reg.firstName = data.TestName;
+            reg.lastName = data.TestLastName;
+            reg.email = data.TestEmailCS;
+            reg.phone = data.TestPhone;
+            reg.password = data.TestPassword;
+            reg.verifiedPassword = data.TestPassword;
+
+            adapter.Register(data.RegisterData);
+            assert.AssertHomePage();
+            assert.AssertCorrectLogin(reg.email);
+        }
+
+        #endregion
+
+        #endregion
 
         protected override void TestInitialize()
         {

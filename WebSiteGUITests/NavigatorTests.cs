@@ -23,6 +23,7 @@ namespace WebSiteGUITests
         {
         }
 
+        #region basic navigation
         [TestMethod]
         public void SearchRideLinkTest()
         {
@@ -64,6 +65,9 @@ namespace WebSiteGUITests
 
         }
 
+        #endregion
+
+        #region complicated navigation
         [TestMethod]
         public void NavigationTest()
         {
@@ -99,6 +103,8 @@ namespace WebSiteGUITests
             Thread.Sleep(1500); //allow link color to change
             assert.AssertPostRequestPage();
         }
+
+        #endregion
 
         protected override void TestInitialize()
         {

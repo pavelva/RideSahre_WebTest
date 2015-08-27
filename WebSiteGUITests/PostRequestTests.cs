@@ -26,6 +26,8 @@ namespace WebSiteGUITests
             this.request = new PostRequest();
         }
 
+        #region misssing fields
+
         [TestMethod]
         public void PostRequestEmptyFields()
         {
@@ -101,6 +103,98 @@ namespace WebSiteGUITests
             assert.MessageAssertion(this.data.BadTimeInterval);
         }
 
+        #endregion
+
+        #region invalid input
+
+        [TestMethod]
+        public void PostRequestBadInputDateWithChar()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            request.smoking = Smoking.yes;
+            request.bags = Bags.big_bag;
+            request.source = "beersheva";
+            request.destination = "haifa";
+            request.setDate("a", month.ToString(), year.ToString());
+            request.fromTime = "14:00";
+            request.toTime = "15:00";
+
+            adapter.PostRequest(request);
+
+            assert.MessageAssertion(this.data.BadDate);
+        }
+
+        [TestMethod]
+        public void PostRequestBadInputDateWithNegative()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            request.smoking = Smoking.yes;
+            request.bags = Bags.big_bag;
+            request.source = "beersheva";
+            request.destination = "haifa";
+            request.setDate("-1", month.ToString(), year.ToString());
+            request.fromTime = "14:00";
+            request.toTime = "15:00";
+
+            adapter.PostRequest(request);
+
+            assert.MessageAssertion(this.data.BadDate);
+        }
+
+        [TestMethod]
+        public void PostRequestBadInputTimeWithChar()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            request.smoking = Smoking.yes;
+            request.bags = Bags.big_bag;
+            request.source = "beersheva";
+            request.destination = "haifa";
+            request.setDate(day, month, year);
+            request.fromTime = "1a:00";
+            request.toTime = "15:00";
+
+            adapter.PostRequest(request);
+
+            assert.MessageAssertion(this.data.BadTimeInterval);
+        }
+
+        [TestMethod]
+        public void PostRequestBadInputTimeWithNegative()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            request.smoking = Smoking.yes;
+            request.bags = Bags.big_bag;
+            request.source = "beersheva";
+            request.destination = "haifa";
+            request.setDate(day, month, year);
+            request.fromTime = "-14:00";
+            request.toTime = "15:00";
+
+            adapter.PostRequest(request);
+
+            assert.MessageAssertion(this.data.BadTimeInterval);
+        }
+
+        #endregion
+
+        #region bad data
+
         [TestMethod]
         public void PostRequestBadDate()
         {
@@ -144,7 +238,52 @@ namespace WebSiteGUITests
         }
 
         [TestMethod]
-        public void PostRequestCorrect()
+        public void PostRequestBadInputSourceDoesntExist()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            request.smoking = Smoking.yes;
+            request.bags = Bags.big_bag;
+            request.source = "1234aaa2";
+            request.destination = "haifa";
+            request.setDate(day, month, year);
+            request.fromTime = "14:00";
+            request.toTime = "15:00";
+
+            adapter.PostRequest(request);
+
+            assert.MessageAssertion(this.data.BadAddress);
+        }
+
+        [TestMethod]
+        public void PostRequestBadInputDestinationDoesntExist()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            request.smoking = Smoking.yes;
+            request.bags = Bags.big_bag;
+            request.source = "beersheva";
+            request.destination = "1234aaa2";
+            request.setDate(day, month, year);
+            request.fromTime = "14:00";
+            request.toTime = "15:00";
+
+            adapter.PostRequest(request);
+
+            assert.MessageAssertion(this.data.BadAddress);
+        }
+
+        #endregion
+
+        #region correct input
+        [TestMethod]
+        public void PostRequestCorrectSmokingBigBag()
         {
             DateTime now = DateTime.Now.AddYears(1);
             var year = now.Year;
@@ -163,6 +302,114 @@ namespace WebSiteGUITests
 
             assert.AssertMyRidesPage();
         }
+
+        [TestMethod]
+        public void PostRequestCorrectSmokingSmallBag()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            request.smoking = Smoking.yes;
+            request.bags = Bags.none;
+            request.source = "beersheva";
+            request.destination = "haifa";
+            request.setDate(day, month, year);
+            request.fromTime = "14:00";
+            request.toTime = "15:00";
+
+            adapter.PostRequest(request);
+
+            assert.AssertMyRidesPage();
+        }
+
+        [TestMethod]
+        public void PostRequestCorrectNoneSmokingBigBag()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            request.smoking = Smoking.no;
+            request.bags = Bags.big_bag;
+            request.source = "beersheva";
+            request.destination = "haifa";
+            request.setDate(day, month, year);
+            request.fromTime = "14:00";
+            request.toTime = "15:00";
+
+            adapter.PostRequest(request);
+
+            assert.AssertMyRidesPage();
+        }
+
+        [TestMethod]
+        public void PostRequestCorrectNonSmokingSmallBag()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            request.smoking = Smoking.no;
+            request.bags = Bags.none;
+            request.source = "beersheva";
+            request.destination = "haifa";
+            request.setDate(day, month, year);
+            request.fromTime = "14:00";
+            request.toTime = "15:00";
+
+            adapter.PostRequest(request);
+
+            assert.AssertMyRidesPage();
+        }
+
+        [TestMethod]
+        public void PostRequestCorrectDontCareSmokingBigBag()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            request.smoking = Smoking.dontCare;
+            request.bags = Bags.big_bag;
+            request.source = "beersheva";
+            request.destination = "haifa";
+            request.setDate(day, month, year);
+            request.fromTime = "14:00";
+            request.toTime = "15:00";
+
+            adapter.PostRequest(request);
+
+            assert.AssertMyRidesPage();
+        }
+
+        [TestMethod]
+        public void PostRequestCorrectDontCareSmokingSmallBag()
+        {
+            DateTime now = DateTime.Now.AddYears(1);
+            var year = now.Year;
+            var month = now.Month;
+            var day = now.Day;
+
+            request.smoking = Smoking.dontCare;
+            request.bags = Bags.none;
+            request.source = "beersheva";
+            request.destination = "haifa";
+            request.setDate(day, month, year);
+            request.fromTime = "14:00";
+            request.toTime = "15:00";
+
+            adapter.PostRequest(request);
+
+            assert.AssertMyRidesPage();
+        }
+
+        #endregion
+
         #region Additional test attributes
 
         // You can use the following additional attributes as you write your tests:
